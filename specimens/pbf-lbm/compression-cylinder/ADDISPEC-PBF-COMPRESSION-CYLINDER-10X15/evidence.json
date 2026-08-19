@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "0.2.0",
+  "specimenId": "ADDISPEC-PBF-COMPRESSION-CYLINDER-10X15",
+  "exactGeometry": {
+    "valid": true,
+    "solids": 1,
+    "faces": 3,
+    "edges": 3,
+    "boundingBox": [
+      [
+        -5,
+        -5,
+        0
+      ],
+      [
+        5,
+        5,
+        15
+      ]
+    ],
+    "volumeMm3": 1178.0972450961733
+  },
+  "canonicalDocument": {
+    "revision": 1,
+    "sha256": "7cb02f2d97e2f8b15e5eb554efdfa59e900b8a58497963408837d21128aa8da9"
+  },
+  "artifact": {
+    "path": "geometry/ADDISPEC-PBF-COMPRESSION-CYLINDER-10X15.step",
+    "bytes": 6116,
+    "sha256": "3266ad2d75182845827ec8d79177a4458c96f13040705b51fc0f81ca015b84cf"
+  },
+  "verificationScope": "digital geometry only"
+}

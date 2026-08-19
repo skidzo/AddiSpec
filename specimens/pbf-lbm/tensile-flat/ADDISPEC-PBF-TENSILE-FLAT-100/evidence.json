@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "0.2.0",
+  "specimenId": "ADDISPEC-PBF-TENSILE-FLAT-100",
+  "exactGeometry": {
+    "valid": true,
+    "solids": 1,
+    "faces": 14,
+    "edges": 36,
+    "boundingBox": [
+      [
+        -50,
+        -10,
+        0
+      ],
+      [
+        50,
+        10,
+        3
+      ]
+    ],
+    "volumeMm3": 3900
+  },
+  "canonicalDocument": {
+    "revision": 1,
+    "sha256": "ef164b492ef5ee9b4b30541ea73e401a9d4e3caffca6e3fc4fae02d863c5819f"
+  },
+  "artifact": {
+    "path": "geometry/ADDISPEC-PBF-TENSILE-FLAT-100.step",
+    "bytes": 43202,
+    "sha256": "2308e03307b74419a6c075ffc46efb2f7ad61b5066c59d9148fd58b673d930c5"
+  },
+  "verificationScope": "digital geometry only"
+}

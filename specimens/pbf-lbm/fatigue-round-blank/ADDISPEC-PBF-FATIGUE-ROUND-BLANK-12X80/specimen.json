@@ -1,0 +1,63 @@
+{
+  "$schema": "../../../../schemas/specimen.schema.json",
+  "schemaVersion": "0.2.0",
+  "id": "ADDISPEC-PBF-FATIGUE-ROUND-BLANK-12X80",
+  "title": "Round fatigue machining blank",
+  "entityType": "Specimen",
+  "status": "digital-geometry-verified",
+  "process": {
+    "category": "PBF-LB/M",
+    "normativeConformance": "not-assessed"
+  },
+  "purpose": [
+    "machined fatigue specimen",
+    "surface-condition study"
+  ],
+  "design": {
+    "geometryFamily": "fatigue-round-blank",
+    "units": "mm",
+    "coordinateSystem": "right-handed",
+    "nominalDimensions": {
+      "diameter": 12,
+      "length": 80
+    },
+    "buildOrientation": {
+      "buildAxis": "+Z",
+      "orientationStatus": "template-not-qualified"
+    }
+  },
+  "lifecycle": {
+    "addiPlanRole": "machining blank",
+    "distinction": "A specimen is built in a Build Job; a sample may later be extracted or prepared from it.",
+    "sampleExtraction": "Final fatigue geometry is machined and surface-finished from the blank."
+  },
+  "artifacts": [
+    {
+      "role": "exact-exchange-geometry",
+      "format": "STEP",
+      "path": "geometry/ADDISPEC-PBF-FATIGUE-ROUND-BLANK-12X80.step",
+      "sha256": "139dd179c66ac6222d57d2edf9aca6fccf4134112dd3b8ebd79d53663e695c59",
+      "bytes": 6112
+    }
+  ],
+  "provenance": {
+    "createdBy": "NuCOS AddiSpec catalog experiment",
+    "authoringSystem": "PartMode typed headless agent",
+    "createdAt": "2026-08-19T22:29:41.044Z"
+  },
+  "qualification": {
+    "manufacturingQualified": false,
+    "limitations": [
+      "No fatigue-test geometry or surface-finish requirement is claimed."
+    ],
+    "missingEvidence": [
+      "Build Job",
+      "machine and parameter profile",
+      "material lot",
+      "build position and orientation confirmation",
+      "post-processing route",
+      "measurement result and uncertainty",
+      "release decision"
+    ]
+  }
+}

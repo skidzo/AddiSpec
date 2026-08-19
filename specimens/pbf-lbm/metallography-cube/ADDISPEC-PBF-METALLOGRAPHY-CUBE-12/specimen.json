@@ -1,0 +1,65 @@
+{
+  "$schema": "../../../../schemas/specimen.schema.json",
+  "schemaVersion": "0.2.0",
+  "id": "ADDISPEC-PBF-METALLOGRAPHY-CUBE-12",
+  "title": "Metallography cube",
+  "entityType": "Specimen",
+  "status": "digital-geometry-verified",
+  "process": {
+    "category": "PBF-LB/M",
+    "normativeConformance": "not-assessed"
+  },
+  "purpose": [
+    "microstructure",
+    "melt-pool analysis",
+    "defect classification"
+  ],
+  "design": {
+    "geometryFamily": "metallography-cube",
+    "units": "mm",
+    "coordinateSystem": "right-handed",
+    "nominalDimensions": {
+      "width": 12,
+      "depth": 12,
+      "height": 12
+    },
+    "buildOrientation": {
+      "buildAxis": "+Z",
+      "orientationStatus": "template-not-qualified"
+    }
+  },
+  "lifecycle": {
+    "addiPlanRole": "sectioning specimen",
+    "distinction": "A specimen is built in a Build Job; a sample may later be extracted or prepared from it.",
+    "sampleExtraction": "Section plane, mounting, grinding, polishing and etching are recorded as downstream sample preparation."
+  },
+  "artifacts": [
+    {
+      "role": "exact-exchange-geometry",
+      "format": "STEP",
+      "path": "geometry/ADDISPEC-PBF-METALLOGRAPHY-CUBE-12.step",
+      "sha256": "e0a4790db475872afe65d5c2f05e4528d791f622f5a98cee4fe785ff031f6e4f",
+      "bytes": 15834
+    }
+  ],
+  "provenance": {
+    "createdBy": "NuCOS AddiSpec catalog experiment",
+    "authoringSystem": "PartMode typed headless agent",
+    "createdAt": "2026-08-19T22:29:42.299Z"
+  },
+  "qualification": {
+    "manufacturingQualified": false,
+    "limitations": [
+      "Section orientation and preparation method are intentionally open."
+    ],
+    "missingEvidence": [
+      "Build Job",
+      "machine and parameter profile",
+      "material lot",
+      "build position and orientation confirmation",
+      "post-processing route",
+      "measurement result and uncertainty",
+      "release decision"
+    ]
+  }
+}

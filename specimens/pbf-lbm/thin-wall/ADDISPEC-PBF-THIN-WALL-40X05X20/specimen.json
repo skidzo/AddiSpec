@@ -1,0 +1,64 @@
+{
+  "$schema": "../../../../schemas/specimen.schema.json",
+  "schemaVersion": "0.2.0",
+  "id": "ADDISPEC-PBF-THIN-WALL-40X05X20",
+  "title": "Thin-wall capability coupon",
+  "entityType": "Specimen",
+  "status": "digital-geometry-verified",
+  "process": {
+    "category": "PBF-LB/M",
+    "normativeConformance": "not-assessed"
+  },
+  "purpose": [
+    "minimum wall capability",
+    "distortion",
+    "surface condition"
+  ],
+  "design": {
+    "geometryFamily": "thin-wall",
+    "units": "mm",
+    "coordinateSystem": "right-handed",
+    "nominalDimensions": {
+      "length": 40,
+      "thickness": 0.5,
+      "height": 20
+    },
+    "buildOrientation": {
+      "buildAxis": "+Z",
+      "orientationStatus": "template-not-qualified"
+    }
+  },
+  "lifecycle": {
+    "addiPlanRole": "geometric-capability artifact",
+    "distinction": "A specimen is built in a Build Job; a sample may later be extracted or prepared from it."
+  },
+  "artifacts": [
+    {
+      "role": "exact-exchange-geometry",
+      "format": "STEP",
+      "path": "geometry/ADDISPEC-PBF-THIN-WALL-40X05X20.step",
+      "sha256": "a8765342bf8fd6e8a27b8b9f8ef5a9a91c68c77fc660fd4e1935d931674e9b62",
+      "bytes": 15864
+    }
+  ],
+  "provenance": {
+    "createdBy": "NuCOS AddiSpec catalog experiment",
+    "authoringSystem": "PartMode typed headless agent",
+    "createdAt": "2026-08-19T22:29:44.965Z"
+  },
+  "qualification": {
+    "manufacturingQualified": false,
+    "limitations": [
+      "Nominal 0.5 mm wall is a challenge feature, not a process capability claim."
+    ],
+    "missingEvidence": [
+      "Build Job",
+      "machine and parameter profile",
+      "material lot",
+      "build position and orientation confirmation",
+      "post-processing route",
+      "measurement result and uncertainty",
+      "release decision"
+    ]
+  }
+}

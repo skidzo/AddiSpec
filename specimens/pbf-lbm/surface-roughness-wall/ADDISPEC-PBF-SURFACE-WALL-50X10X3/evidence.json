@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "0.2.0",
+  "specimenId": "ADDISPEC-PBF-SURFACE-WALL-50X10X3",
+  "exactGeometry": {
+    "valid": true,
+    "solids": 1,
+    "faces": 6,
+    "edges": 12,
+    "boundingBox": [
+      [
+        -50,
+        -3,
+        0
+      ],
+      [
+        0,
+        0,
+        10
+      ]
+    ],
+    "volumeMm3": 1500
+  },
+  "canonicalDocument": {
+    "revision": 1,
+    "sha256": "aae59e97c72d91e2d1dbf7ee5caea29938e3546b12ed45dc85e7c2fd39d7a465"
+  },
+  "artifact": {
+    "path": "geometry/ADDISPEC-PBF-SURFACE-WALL-50X10X3.step",
+    "bytes": 15840,
+    "sha256": "61865a13b04d7c9f1368d1e4f2e6ca4f259050e2070c412ade0bbe0f9c97081b"
+  },
+  "verificationScope": "digital geometry only"
+}

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "0.2.0",
+  "specimenId": "ADDISPEC-PBF-TENSILE-ROUND-BLANK-12X70",
+  "exactGeometry": {
+    "valid": true,
+    "solids": 1,
+    "faces": 3,
+    "edges": 3,
+    "boundingBox": [
+      [
+        -6,
+        -6,
+        0
+      ],
+      [
+        6,
+        6,
+        70
+      ]
+    ],
+    "volumeMm3": 7916.813487046284
+  },
+  "canonicalDocument": {
+    "revision": 1,
+    "sha256": "964cefc330ad1e4294d787a1ab7d9be417076926090430c1a7cf876fe5d18bc6"
+  },
+  "artifact": {
+    "path": "geometry/ADDISPEC-PBF-TENSILE-ROUND-BLANK-12X70.step",
+    "bytes": 6112,
+    "sha256": "25d0539deef72caa867c7d3ebd92a03b22c2f897c1538d13bb23b0f8a9a0c118"
+  },
+  "verificationScope": "digital geometry only"
+}

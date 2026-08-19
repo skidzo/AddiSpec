@@ -1,0 +1,63 @@
+{
+  "$schema": "../../../../schemas/specimen.schema.json",
+  "schemaVersion": "0.2.0",
+  "id": "ADDISPEC-PBF-SURFACE-WALL-50X10X3",
+  "title": "Surface roughness wall",
+  "entityType": "Specimen",
+  "status": "digital-geometry-verified",
+  "process": {
+    "category": "PBF-LB/M",
+    "normativeConformance": "not-assessed"
+  },
+  "purpose": [
+    "surface roughness",
+    "scan-direction comparison"
+  ],
+  "design": {
+    "geometryFamily": "surface-roughness-wall",
+    "units": "mm",
+    "coordinateSystem": "right-handed",
+    "nominalDimensions": {
+      "length": 50,
+      "thickness": 3,
+      "height": 10
+    },
+    "buildOrientation": {
+      "buildAxis": "+Z",
+      "orientationStatus": "template-not-qualified"
+    }
+  },
+  "lifecycle": {
+    "addiPlanRole": "as-built surface specimen",
+    "distinction": "A specimen is built in a Build Job; a sample may later be extracted or prepared from it."
+  },
+  "artifacts": [
+    {
+      "role": "exact-exchange-geometry",
+      "format": "STEP",
+      "path": "geometry/ADDISPEC-PBF-SURFACE-WALL-50X10X3.step",
+      "sha256": "61865a13b04d7c9f1368d1e4f2e6ca4f259050e2070c412ade0bbe0f9c97081b",
+      "bytes": 15840
+    }
+  ],
+  "provenance": {
+    "createdBy": "NuCOS AddiSpec catalog experiment",
+    "authoringSystem": "PartMode typed headless agent",
+    "createdAt": "2026-08-19T22:29:44.423Z"
+  },
+  "qualification": {
+    "manufacturingQualified": false,
+    "limitations": [
+      "Surface direction, cutoff, filtering and measurement method must be supplied by the inspection plan."
+    ],
+    "missingEvidence": [
+      "Build Job",
+      "machine and parameter profile",
+      "material lot",
+      "build position and orientation confirmation",
+      "post-processing route",
+      "measurement result and uncertainty",
+      "release decision"
+    ]
+  }
+}

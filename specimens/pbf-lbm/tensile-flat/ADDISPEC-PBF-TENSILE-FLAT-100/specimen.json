@@ -1,0 +1,65 @@
+{
+  "$schema": "../../../../schemas/specimen.schema.json",
+  "schemaVersion": "0.2.0",
+  "id": "ADDISPEC-PBF-TENSILE-FLAT-100",
+  "title": "Flat tensile near-net template",
+  "entityType": "Specimen",
+  "status": "digital-geometry-verified",
+  "process": {
+    "category": "PBF-LB/M",
+    "normativeConformance": "not-assessed"
+  },
+  "purpose": [
+    "tensile testing",
+    "orientation comparison"
+  ],
+  "design": {
+    "geometryFamily": "tensile-flat",
+    "units": "mm",
+    "coordinateSystem": "right-handed",
+    "nominalDimensions": {
+      "totalLength": 100,
+      "gripWidth": 20,
+      "gaugeWidth": 6,
+      "gaugeLength": 40,
+      "thickness": 3
+    },
+    "buildOrientation": {
+      "buildAxis": "+Z",
+      "orientationStatus": "template-not-qualified"
+    }
+  },
+  "lifecycle": {
+    "addiPlanRole": "near-net mechanical-test specimen",
+    "distinction": "A specimen is built in a Build Job; a sample may later be extracted or prepared from it."
+  },
+  "artifacts": [
+    {
+      "role": "exact-exchange-geometry",
+      "format": "STEP",
+      "path": "geometry/ADDISPEC-PBF-TENSILE-FLAT-100.step",
+      "sha256": "2308e03307b74419a6c075ffc46efb2f7ad61b5066c59d9148fd58b673d930c5",
+      "bytes": 43202
+    }
+  ],
+  "provenance": {
+    "createdBy": "NuCOS AddiSpec catalog experiment",
+    "authoringSystem": "PartMode typed headless agent",
+    "createdAt": "2026-08-19T22:29:39.433Z"
+  },
+  "qualification": {
+    "manufacturingQualified": false,
+    "limitations": [
+      "Simplified straight-transition template; fillets, machining allowance and test-standard conformity require controlled derivation."
+    ],
+    "missingEvidence": [
+      "Build Job",
+      "machine and parameter profile",
+      "material lot",
+      "build position and orientation confirmation",
+      "post-processing route",
+      "measurement result and uncertainty",
+      "release decision"
+    ]
+  }
+}

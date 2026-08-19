@@ -1,0 +1,64 @@
+{
+  "$schema": "../../../../schemas/specimen.schema.json",
+  "schemaVersion": "0.2.0",
+  "id": "ADDISPEC-PBF-SUPPORT-PLATE-30X30X3",
+  "title": "Support and removal witness plate",
+  "entityType": "Specimen",
+  "status": "digital-geometry-verified",
+  "process": {
+    "category": "PBF-LB/M",
+    "normativeConformance": "not-assessed"
+  },
+  "purpose": [
+    "support strategy",
+    "plate removal",
+    "distortion"
+  ],
+  "design": {
+    "geometryFamily": "support-removal-plate",
+    "units": "mm",
+    "coordinateSystem": "right-handed",
+    "nominalDimensions": {
+      "width": 30,
+      "depth": 30,
+      "thickness": 3
+    },
+    "buildOrientation": {
+      "buildAxis": "+Z",
+      "orientationStatus": "template-not-qualified"
+    }
+  },
+  "lifecycle": {
+    "addiPlanRole": "post-processing witness specimen",
+    "distinction": "A specimen is built in a Build Job; a sample may later be extracted or prepared from it."
+  },
+  "artifacts": [
+    {
+      "role": "exact-exchange-geometry",
+      "format": "STEP",
+      "path": "geometry/ADDISPEC-PBF-SUPPORT-PLATE-30X30X3.step",
+      "sha256": "02c3992d78beedabb3198352ff440f4c229bf63dc086ca7ec9229b701d069694",
+      "bytes": 15841
+    }
+  ],
+  "provenance": {
+    "createdBy": "NuCOS AddiSpec catalog experiment",
+    "authoringSystem": "PartMode typed headless agent",
+    "createdAt": "2026-08-19T22:29:46.755Z"
+  },
+  "qualification": {
+    "manufacturingQualified": false,
+    "limitations": [
+      "Support geometry is Build-Job-specific and is not embedded in this nominal plate."
+    ],
+    "missingEvidence": [
+      "Build Job",
+      "machine and parameter profile",
+      "material lot",
+      "build position and orientation confirmation",
+      "post-processing route",
+      "measurement result and uncertainty",
+      "release decision"
+    ]
+  }
+}

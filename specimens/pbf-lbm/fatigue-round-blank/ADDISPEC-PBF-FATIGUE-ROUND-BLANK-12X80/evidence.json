@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "0.2.0",
+  "specimenId": "ADDISPEC-PBF-FATIGUE-ROUND-BLANK-12X80",
+  "exactGeometry": {
+    "valid": true,
+    "solids": 1,
+    "faces": 3,
+    "edges": 3,
+    "boundingBox": [
+      [
+        -6,
+        -6,
+        0
+      ],
+      [
+        6,
+        6,
+        80
+      ]
+    ],
+    "volumeMm3": 9047.78684233861
+  },
+  "canonicalDocument": {
+    "revision": 1,
+    "sha256": "1c4b9d16d7175bb8fff4a4b46a53abde38343185ab4e51fad2c92018f587ca44"
+  },
+  "artifact": {
+    "path": "geometry/ADDISPEC-PBF-FATIGUE-ROUND-BLANK-12X80.step",
+    "bytes": 6112,
+    "sha256": "139dd179c66ac6222d57d2edf9aca6fccf4134112dd3b8ebd79d53663e695c59"
+  },
+  "verificationScope": "digital geometry only"
+}

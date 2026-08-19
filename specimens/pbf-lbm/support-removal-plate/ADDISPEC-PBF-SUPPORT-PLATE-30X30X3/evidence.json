@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "0.2.0",
+  "specimenId": "ADDISPEC-PBF-SUPPORT-PLATE-30X30X3",
+  "exactGeometry": {
+    "valid": true,
+    "solids": 1,
+    "faces": 6,
+    "edges": 12,
+    "boundingBox": [
+      [
+        -30,
+        -30,
+        0
+      ],
+      [
+        0,
+        0,
+        3
+      ]
+    ],
+    "volumeMm3": 2700
+  },
+  "canonicalDocument": {
+    "revision": 1,
+    "sha256": "34ae0ecd9d3d1af339f7d9acf622d73e5f9835eae6da807b362565e1bd194d37"
+  },
+  "artifact": {
+    "path": "geometry/ADDISPEC-PBF-SUPPORT-PLATE-30X30X3.step",
+    "bytes": 15841,
+    "sha256": "02c3992d78beedabb3198352ff440f4c229bf63dc086ca7ec9229b701d069694"
+  },
+  "verificationScope": "digital geometry only"
+}

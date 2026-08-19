@@ -1,0 +1,63 @@
+{
+  "$schema": "../../../../schemas/specimen.schema.json",
+  "schemaVersion": "0.2.0",
+  "id": "ADDISPEC-PBF-THERMAL-CYLINDER-6X12",
+  "title": "Thermal analysis cylinder",
+  "entityType": "Specimen",
+  "status": "digital-geometry-verified",
+  "process": {
+    "category": "PBF-LB/M",
+    "normativeConformance": "not-assessed"
+  },
+  "purpose": [
+    "DSC/DTA machining stock",
+    "phase-transformation study"
+  ],
+  "design": {
+    "geometryFamily": "thermal-analysis-cylinder",
+    "units": "mm",
+    "coordinateSystem": "right-handed",
+    "nominalDimensions": {
+      "diameter": 6,
+      "height": 12
+    },
+    "buildOrientation": {
+      "buildAxis": "+Z",
+      "orientationStatus": "template-not-qualified"
+    }
+  },
+  "lifecycle": {
+    "addiPlanRole": "sample-extraction stock",
+    "distinction": "A specimen is built in a Build Job; a sample may later be extracted or prepared from it.",
+    "sampleExtraction": "Laboratory-sized thermal-analysis samples are extracted downstream."
+  },
+  "artifacts": [
+    {
+      "role": "exact-exchange-geometry",
+      "format": "STEP",
+      "path": "geometry/ADDISPEC-PBF-THERMAL-CYLINDER-6X12.step",
+      "sha256": "5f1a64a2b251154258c60e47de891c0eb22784ba0f91016d59e8e3f20105ba95",
+      "bytes": 6112
+    }
+  ],
+  "provenance": {
+    "createdBy": "NuCOS AddiSpec catalog experiment",
+    "authoringSystem": "PartMode typed headless agent",
+    "createdAt": "2026-08-19T22:29:43.846Z"
+  },
+  "qualification": {
+    "manufacturingQualified": false,
+    "limitations": [
+      "Not a final calorimetry sample geometry."
+    ],
+    "missingEvidence": [
+      "Build Job",
+      "machine and parameter profile",
+      "material lot",
+      "build position and orientation confirmation",
+      "post-processing route",
+      "measurement result and uncertainty",
+      "release decision"
+    ]
+  }
+}

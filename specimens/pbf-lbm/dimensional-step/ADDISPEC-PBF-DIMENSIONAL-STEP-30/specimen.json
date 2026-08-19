@@ -1,0 +1,64 @@
+{
+  "$schema": "../../../../schemas/specimen.schema.json",
+  "schemaVersion": "0.2.0",
+  "id": "ADDISPEC-PBF-DIMENSIONAL-STEP-30",
+  "title": "Dimensional step artifact",
+  "entityType": "Specimen",
+  "status": "digital-geometry-verified",
+  "process": {
+    "category": "PBF-LB/M",
+    "normativeConformance": "not-assessed"
+  },
+  "purpose": [
+    "dimensional accuracy",
+    "scale and compensation study"
+  ],
+  "design": {
+    "geometryFamily": "dimensional-step",
+    "units": "mm",
+    "coordinateSystem": "right-handed",
+    "nominalDimensions": {
+      "envelopeWidth": 30,
+      "envelopeDepth": 30,
+      "height": 10,
+      "step": 10
+    },
+    "buildOrientation": {
+      "buildAxis": "+Z",
+      "orientationStatus": "template-not-qualified"
+    }
+  },
+  "lifecycle": {
+    "addiPlanRole": "geometric-capability artifact",
+    "distinction": "A specimen is built in a Build Job; a sample may later be extracted or prepared from it."
+  },
+  "artifacts": [
+    {
+      "role": "exact-exchange-geometry",
+      "format": "STEP",
+      "path": "geometry/ADDISPEC-PBF-DIMENSIONAL-STEP-30.step",
+      "sha256": "aa71c41dd02dbecc45e81f3119da552060a54101921c6d579bcdfcdb93c9423c",
+      "bytes": 29227
+    }
+  ],
+  "provenance": {
+    "createdBy": "NuCOS AddiSpec catalog experiment",
+    "authoringSystem": "PartMode typed headless agent",
+    "createdAt": "2026-08-19T22:29:46.176Z"
+  },
+  "qualification": {
+    "manufacturingQualified": false,
+    "limitations": [
+      "Measurement features and datum system require an inspection drawing."
+    ],
+    "missingEvidence": [
+      "Build Job",
+      "machine and parameter profile",
+      "material lot",
+      "build position and orientation confirmation",
+      "post-processing route",
+      "measurement result and uncertainty",
+      "release decision"
+    ]
+  }
+}

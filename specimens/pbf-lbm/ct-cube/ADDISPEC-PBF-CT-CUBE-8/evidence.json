@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "0.2.0",
+  "specimenId": "ADDISPEC-PBF-CT-CUBE-8",
+  "exactGeometry": {
+    "valid": true,
+    "solids": 1,
+    "faces": 6,
+    "edges": 12,
+    "boundingBox": [
+      [
+        -8,
+        -8,
+        0
+      ],
+      [
+        0,
+        0,
+        8
+      ]
+    ],
+    "volumeMm3": 511.9999999999999
+  },
+  "canonicalDocument": {
+    "revision": 1,
+    "sha256": "6a02b1161949478c46ce4310c8f86eee6f519816f68fd8fae0593a2139c973b9"
+  },
+  "artifact": {
+    "path": "geometry/ADDISPEC-PBF-CT-CUBE-8.step",
+    "bytes": 15793,
+    "sha256": "ecd6260bba7b0e4667c10a9a6a9b34d36f47aad7c90ca3176537b2bc3345fbf7"
+  },
+  "verificationScope": "digital geometry only"
+}

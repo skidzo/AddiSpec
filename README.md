@@ -10,9 +10,11 @@ The project starts with PBF-LB/M and is designed to connect later to Asset Admin
 
 Useful AM test artefacts already exist, including the [NIST AM test artifact](https://www.nist.gov/el/intelligent-systems-division-73500/production-systems-group/nist-additive-manufacturing-test), [NIST AM-Bench](https://www.nist.gov/ambench), and the benchmarking framework described by [ISO/ASTM 52902:2023](https://www.iso.org/standard/79683.html). They do not form a single open Git repository for reusable parametric definitions plus semantic, revision, and evidence metadata. AddiSpec aims to fill that engineering-integration gap, not replace standards or authoritative datasets.
 
-## Initial specimen
+## Current PBF-LB/M catalogue
 
-`specimens/pbf-lbm/density-cube/NUCOS-PBF-DENSITY-COUPON-001` is a 10 × 10 × 10 mm nominal 316L density coupon generated in the first NuCOS × PartMode experiment.
+The first catalogue contains 18 reusable specimen templates plus the original NuCOS density-coupon experiment. It covers density and porosity, metallography, hardness, chemistry and thermal-analysis stock, tensile/compression/fatigue/impact blanks, surface and thin-wall capability, overhangs, dimensional steps, supports, CT, and powder-lot witnesses.
+
+See [`catalog.json`](catalog.json) for the machine-readable index.
 
 Verified digital evidence:
 
@@ -23,7 +25,7 @@ Verified digital evidence:
 - two revision-bound agent commits (8 mm to 10 mm height);
 - a preliminary AddiBase/AAS mapping.
 
-This verifies the digital geometry workflow only. It is **not yet a norm-conforming or manufacturing-qualified specimen definition**.
+All 19 entries carry exact STEP geometry and SHA-256 evidence. This verifies the digital geometry workflow only. They are **not yet norm-conforming or manufacturing-qualified specimen definitions**.
 
 ## Repository model
 

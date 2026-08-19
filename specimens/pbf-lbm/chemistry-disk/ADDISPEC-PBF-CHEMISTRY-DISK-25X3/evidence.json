@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "0.2.0",
+  "specimenId": "ADDISPEC-PBF-CHEMISTRY-DISK-25X3",
+  "exactGeometry": {
+    "valid": true,
+    "solids": 1,
+    "faces": 3,
+    "edges": 3,
+    "boundingBox": [
+      [
+        -12.5,
+        -12.5,
+        0
+      ],
+      [
+        12.5,
+        12.5,
+        3
+      ]
+    ],
+    "volumeMm3": 1472.621556370217
+  },
+  "canonicalDocument": {
+    "revision": 1,
+    "sha256": "31c4fe4478e8345de81fc8b53225a1e844fe2a9c3cce061bfcc2b9e733fdfb85"
+  },
+  "artifact": {
+    "path": "geometry/ADDISPEC-PBF-CHEMISTRY-DISK-25X3.step",
+    "bytes": 6128,
+    "sha256": "b4d6624e6999bff7d175d0854fb900e9a032f4694ec89820b5a75a775f620157"
+  },
+  "verificationScope": "digital geometry only"
+}

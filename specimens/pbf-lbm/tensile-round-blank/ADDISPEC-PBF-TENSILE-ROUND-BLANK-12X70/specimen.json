@@ -1,0 +1,63 @@
+{
+  "$schema": "../../../../schemas/specimen.schema.json",
+  "schemaVersion": "0.2.0",
+  "id": "ADDISPEC-PBF-TENSILE-ROUND-BLANK-12X70",
+  "title": "Round tensile machining blank",
+  "entityType": "Specimen",
+  "status": "digital-geometry-verified",
+  "process": {
+    "category": "PBF-LB/M",
+    "normativeConformance": "not-assessed"
+  },
+  "purpose": [
+    "machined tensile specimen",
+    "build-orientation comparison"
+  ],
+  "design": {
+    "geometryFamily": "tensile-round-blank",
+    "units": "mm",
+    "coordinateSystem": "right-handed",
+    "nominalDimensions": {
+      "diameter": 12,
+      "length": 70
+    },
+    "buildOrientation": {
+      "buildAxis": "+Z",
+      "orientationStatus": "template-not-qualified"
+    }
+  },
+  "lifecycle": {
+    "addiPlanRole": "machining blank",
+    "distinction": "A specimen is built in a Build Job; a sample may later be extracted or prepared from it.",
+    "sampleExtraction": "Final tensile geometry is machined from the additive blank."
+  },
+  "artifacts": [
+    {
+      "role": "exact-exchange-geometry",
+      "format": "STEP",
+      "path": "geometry/ADDISPEC-PBF-TENSILE-ROUND-BLANK-12X70.step",
+      "sha256": "25d0539deef72caa867c7d3ebd92a03b22c2f897c1538d13bb23b0f8a9a0c118",
+      "bytes": 6112
+    }
+  ],
+  "provenance": {
+    "createdBy": "NuCOS AddiSpec catalog experiment",
+    "authoringSystem": "PartMode typed headless agent",
+    "createdAt": "2026-08-19T22:29:39.999Z"
+  },
+  "qualification": {
+    "manufacturingQualified": false,
+    "limitations": [
+      "Final gauge geometry and machining allowance depend on the selected test standard and laboratory route."
+    ],
+    "missingEvidence": [
+      "Build Job",
+      "machine and parameter profile",
+      "material lot",
+      "build position and orientation confirmation",
+      "post-processing route",
+      "measurement result and uncertainty",
+      "release decision"
+    ]
+  }
+}

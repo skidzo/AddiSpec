@@ -1,0 +1,63 @@
+{
+  "$schema": "../../../../schemas/specimen.schema.json",
+  "schemaVersion": "0.2.0",
+  "id": "ADDISPEC-PBF-IMPACT-BLANK-10X10X55",
+  "title": "Impact-test machining blank",
+  "entityType": "Specimen",
+  "status": "digital-geometry-verified",
+  "process": {
+    "category": "PBF-LB/M",
+    "normativeConformance": "not-assessed"
+  },
+  "purpose": [
+    "impact testing"
+  ],
+  "design": {
+    "geometryFamily": "impact-blank",
+    "units": "mm",
+    "coordinateSystem": "right-handed",
+    "nominalDimensions": {
+      "width": 10,
+      "depth": 10,
+      "length": 55
+    },
+    "buildOrientation": {
+      "buildAxis": "+Z",
+      "orientationStatus": "template-not-qualified"
+    }
+  },
+  "lifecycle": {
+    "addiPlanRole": "machining blank",
+    "distinction": "A specimen is built in a Build Job; a sample may later be extracted or prepared from it.",
+    "sampleExtraction": "Notch and final surfaces are produced in the controlled post-processing route."
+  },
+  "artifacts": [
+    {
+      "role": "exact-exchange-geometry",
+      "format": "STEP",
+      "path": "geometry/ADDISPEC-PBF-IMPACT-BLANK-10X10X55.step",
+      "sha256": "60b7ed6de481102b814c75c51cf7d0f802442c908bd8e60b54925d0ba76e0b31",
+      "bytes": 15834
+    }
+  ],
+  "provenance": {
+    "createdBy": "NuCOS AddiSpec catalog experiment",
+    "authoringSystem": "PartMode typed headless agent",
+    "createdAt": "2026-08-19T22:29:41.679Z"
+  },
+  "qualification": {
+    "manufacturingQualified": false,
+    "limitations": [
+      "This is an unnotched blank, not a Charpy-conforming final specimen."
+    ],
+    "missingEvidence": [
+      "Build Job",
+      "machine and parameter profile",
+      "material lot",
+      "build position and orientation confirmation",
+      "post-processing route",
+      "measurement result and uncertainty",
+      "release decision"
+    ]
+  }
+}

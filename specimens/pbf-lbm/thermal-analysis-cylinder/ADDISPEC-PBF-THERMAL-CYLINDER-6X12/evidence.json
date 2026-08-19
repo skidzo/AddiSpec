@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "0.2.0",
+  "specimenId": "ADDISPEC-PBF-THERMAL-CYLINDER-6X12",
+  "exactGeometry": {
+    "valid": true,
+    "solids": 1,
+    "faces": 3,
+    "edges": 3,
+    "boundingBox": [
+      [
+        -3,
+        -3,
+        0
+      ],
+      [
+        3,
+        3,
+        12
+      ]
+    ],
+    "volumeMm3": 339.29200658769787
+  },
+  "canonicalDocument": {
+    "revision": 1,
+    "sha256": "b601c876de8f6b144bec4a538006437a55900451febdbf323cda8ecaff0c52fa"
+  },
+  "artifact": {
+    "path": "geometry/ADDISPEC-PBF-THERMAL-CYLINDER-6X12.step",
+    "bytes": 6112,
+    "sha256": "5f1a64a2b251154258c60e47de891c0eb22784ba0f91016d59e8e3f20105ba95"
+  },
+  "verificationScope": "digital geometry only"
+}

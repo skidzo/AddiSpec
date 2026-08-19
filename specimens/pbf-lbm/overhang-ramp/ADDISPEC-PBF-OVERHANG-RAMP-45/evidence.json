@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "0.2.0",
+  "specimenId": "ADDISPEC-PBF-OVERHANG-RAMP-45",
+  "exactGeometry": {
+    "valid": true,
+    "solids": 1,
+    "faces": 6,
+    "edges": 12,
+    "boundingBox": [
+      [
+        -20.000000000000004,
+        -10.000000000000004,
+        0
+      ],
+      [
+        20,
+        10,
+        10
+      ]
+    ],
+    "volumeMm3": 6000
+  },
+  "canonicalDocument": {
+    "revision": 1,
+    "sha256": "f5d1f9ea2e612b5841727bb52d06b0c3bc15b32e39022e1af4da55925f25c934"
+  },
+  "artifact": {
+    "path": "geometry/ADDISPEC-PBF-OVERHANG-RAMP-45.step",
+    "bytes": 16269,
+    "sha256": "b54cca5433f514a335809fe8b4c91f626adcea30028fa7b9cf1aecd0cb8e6aaa"
+  },
+  "verificationScope": "digital geometry only"
+}

@@ -1,0 +1,61 @@
+{
+  "$schema": "../../../../schemas/specimen.schema.json",
+  "schemaVersion": "0.2.0",
+  "id": "ADDISPEC-PBF-COMPRESSION-CYLINDER-10X15",
+  "title": "Compression cylinder",
+  "entityType": "Specimen",
+  "status": "digital-geometry-verified",
+  "process": {
+    "category": "PBF-LB/M",
+    "normativeConformance": "not-assessed"
+  },
+  "purpose": [
+    "compression testing"
+  ],
+  "design": {
+    "geometryFamily": "compression-cylinder",
+    "units": "mm",
+    "coordinateSystem": "right-handed",
+    "nominalDimensions": {
+      "diameter": 10,
+      "height": 15
+    },
+    "buildOrientation": {
+      "buildAxis": "+Z",
+      "orientationStatus": "template-not-qualified"
+    }
+  },
+  "lifecycle": {
+    "addiPlanRole": "mechanical-test specimen template",
+    "distinction": "A specimen is built in a Build Job; a sample may later be extracted or prepared from it."
+  },
+  "artifacts": [
+    {
+      "role": "exact-exchange-geometry",
+      "format": "STEP",
+      "path": "geometry/ADDISPEC-PBF-COMPRESSION-CYLINDER-10X15.step",
+      "sha256": "3266ad2d75182845827ec8d79177a4458c96f13040705b51fc0f81ca015b84cf",
+      "bytes": 6116
+    }
+  ],
+  "provenance": {
+    "createdBy": "NuCOS AddiSpec catalog experiment",
+    "authoringSystem": "PartMode typed headless agent",
+    "createdAt": "2026-08-19T22:29:40.522Z"
+  },
+  "qualification": {
+    "manufacturingQualified": false,
+    "limitations": [
+      "End-face preparation and aspect ratio require validation for the selected procedure."
+    ],
+    "missingEvidence": [
+      "Build Job",
+      "machine and parameter profile",
+      "material lot",
+      "build position and orientation confirmation",
+      "post-processing route",
+      "measurement result and uncertainty",
+      "release decision"
+    ]
+  }
+}

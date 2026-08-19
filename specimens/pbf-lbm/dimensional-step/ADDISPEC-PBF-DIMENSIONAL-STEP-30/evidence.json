@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "0.2.0",
+  "specimenId": "ADDISPEC-PBF-DIMENSIONAL-STEP-30",
+  "exactGeometry": {
+    "valid": true,
+    "solids": 1,
+    "faces": 10,
+    "edges": 24,
+    "boundingBox": [
+      [
+        -15,
+        -15,
+        0
+      ],
+      [
+        15,
+        15,
+        10
+      ]
+    ],
+    "volumeMm3": 6000
+  },
+  "canonicalDocument": {
+    "revision": 1,
+    "sha256": "ebe102dd445d4e4e55cf8e122e76e2a1ddc99e5fc8b60b42b9cbbd8349fe92fa"
+  },
+  "artifact": {
+    "path": "geometry/ADDISPEC-PBF-DIMENSIONAL-STEP-30.step",
+    "bytes": 29227,
+    "sha256": "aa71c41dd02dbecc45e81f3119da552060a54101921c6d579bcdfcdb93c9423c"
+  },
+  "verificationScope": "digital geometry only"
+}

@@ -1,0 +1,171 @@
+{
+  "schemaVersion": "0.2.0",
+  "process": "PBF-LB/M",
+  "specimenCount": 18,
+  "specimens": [
+    {
+      "id": "ADDISPEC-PBF-DENSITY-CUBE-10",
+      "family": "density-cube",
+      "title": "Density cube 10 mm",
+      "purpose": [
+        "relative density",
+        "porosity",
+        "parameter screening"
+      ]
+    },
+    {
+      "id": "ADDISPEC-PBF-DENSITY-CYLINDER-10",
+      "family": "density-cylinder",
+      "title": "Density cylinder 10 mm",
+      "purpose": [
+        "relative density",
+        "metallographic section"
+      ]
+    },
+    {
+      "id": "ADDISPEC-PBF-TENSILE-FLAT-100",
+      "family": "tensile-flat",
+      "title": "Flat tensile near-net template",
+      "purpose": [
+        "tensile testing",
+        "orientation comparison"
+      ]
+    },
+    {
+      "id": "ADDISPEC-PBF-TENSILE-ROUND-BLANK-12X70",
+      "family": "tensile-round-blank",
+      "title": "Round tensile machining blank",
+      "purpose": [
+        "machined tensile specimen",
+        "build-orientation comparison"
+      ]
+    },
+    {
+      "id": "ADDISPEC-PBF-COMPRESSION-CYLINDER-10X15",
+      "family": "compression-cylinder",
+      "title": "Compression cylinder",
+      "purpose": [
+        "compression testing"
+      ]
+    },
+    {
+      "id": "ADDISPEC-PBF-FATIGUE-ROUND-BLANK-12X80",
+      "family": "fatigue-round-blank",
+      "title": "Round fatigue machining blank",
+      "purpose": [
+        "machined fatigue specimen",
+        "surface-condition study"
+      ]
+    },
+    {
+      "id": "ADDISPEC-PBF-IMPACT-BLANK-10X10X55",
+      "family": "impact-blank",
+      "title": "Impact-test machining blank",
+      "purpose": [
+        "impact testing"
+      ]
+    },
+    {
+      "id": "ADDISPEC-PBF-METALLOGRAPHY-CUBE-12",
+      "family": "metallography-cube",
+      "title": "Metallography cube",
+      "purpose": [
+        "microstructure",
+        "melt-pool analysis",
+        "defect classification"
+      ]
+    },
+    {
+      "id": "ADDISPEC-PBF-HARDNESS-BLOCK-20X20X10",
+      "family": "hardness-block",
+      "title": "Hardness block",
+      "purpose": [
+        "hardness mapping",
+        "heat-treatment comparison"
+      ]
+    },
+    {
+      "id": "ADDISPEC-PBF-CHEMISTRY-DISK-25X3",
+      "family": "chemistry-disk",
+      "title": "Chemistry analysis disk",
+      "purpose": [
+        "chemical analysis",
+        "material verification"
+      ]
+    },
+    {
+      "id": "ADDISPEC-PBF-THERMAL-CYLINDER-6X12",
+      "family": "thermal-analysis-cylinder",
+      "title": "Thermal analysis cylinder",
+      "purpose": [
+        "DSC/DTA machining stock",
+        "phase-transformation study"
+      ]
+    },
+    {
+      "id": "ADDISPEC-PBF-SURFACE-WALL-50X10X3",
+      "family": "surface-roughness-wall",
+      "title": "Surface roughness wall",
+      "purpose": [
+        "surface roughness",
+        "scan-direction comparison"
+      ]
+    },
+    {
+      "id": "ADDISPEC-PBF-THIN-WALL-40X05X20",
+      "family": "thin-wall",
+      "title": "Thin-wall capability coupon",
+      "purpose": [
+        "minimum wall capability",
+        "distortion",
+        "surface condition"
+      ]
+    },
+    {
+      "id": "ADDISPEC-PBF-OVERHANG-RAMP-45",
+      "family": "overhang-ramp",
+      "title": "45 degree overhang ramp",
+      "purpose": [
+        "overhang capability",
+        "downskin evaluation"
+      ]
+    },
+    {
+      "id": "ADDISPEC-PBF-DIMENSIONAL-STEP-30",
+      "family": "dimensional-step",
+      "title": "Dimensional step artifact",
+      "purpose": [
+        "dimensional accuracy",
+        "scale and compensation study"
+      ]
+    },
+    {
+      "id": "ADDISPEC-PBF-SUPPORT-PLATE-30X30X3",
+      "family": "support-removal-plate",
+      "title": "Support and removal witness plate",
+      "purpose": [
+        "support strategy",
+        "plate removal",
+        "distortion"
+      ]
+    },
+    {
+      "id": "ADDISPEC-PBF-CT-CUBE-8",
+      "family": "ct-cube",
+      "title": "CT porosity cube",
+      "purpose": [
+        "computed tomography",
+        "volumetric defect analysis"
+      ]
+    },
+    {
+      "id": "ADDISPEC-PBF-POWDER-WITNESS-10",
+      "family": "powder-witness-cube",
+      "title": "Powder-lot witness cube",
+      "purpose": [
+        "powder-lot comparison",
+        "reuse-cycle monitoring"
+      ]
+    }
+  ]
+}

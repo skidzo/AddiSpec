@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "0.2.0",
+  "specimenId": "ADDISPEC-PBF-HARDNESS-BLOCK-20X20X10",
+  "exactGeometry": {
+    "valid": true,
+    "solids": 1,
+    "faces": 6,
+    "edges": 12,
+    "boundingBox": [
+      [
+        -20,
+        -20,
+        0
+      ],
+      [
+        0,
+        0,
+        10
+      ]
+    ],
+    "volumeMm3": 3999.999999999999
+  },
+  "canonicalDocument": {
+    "revision": 1,
+    "sha256": "e6ab2f91fea73591ca8af27343db43046749739924261961a9dd3f9933b157f9"
+  },
+  "artifact": {
+    "path": "geometry/ADDISPEC-PBF-HARDNESS-BLOCK-20X20X10.step",
+    "bytes": 15854,
+    "sha256": "ea1e9819280effdd36b5d7cdd4fabd324b8e8a78dd94ae725ff553f3923352d8"
+  },
+  "verificationScope": "digital geometry only"
+}

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "0.2.0",
+  "specimenId": "ADDISPEC-PBF-DENSITY-CYLINDER-10",
+  "exactGeometry": {
+    "valid": true,
+    "solids": 1,
+    "faces": 3,
+    "edges": 3,
+    "boundingBox": [
+      [
+        -5,
+        -5,
+        0
+      ],
+      [
+        5,
+        5,
+        10
+      ]
+    ],
+    "volumeMm3": 785.3981633974489
+  },
+  "canonicalDocument": {
+    "revision": 1,
+    "sha256": "959fadb68f26b75f5bbca186143b96c55f5ca53b333fc40051aa1986cc8e5773"
+  },
+  "artifact": {
+    "path": "geometry/ADDISPEC-PBF-DENSITY-CYLINDER-10.step",
+    "bytes": 6116,
+    "sha256": "efa7d3b60aa0577c53f2c8ab2465f64ad9e368e3240158365709013837c6455d"
+  },
+  "verificationScope": "digital geometry only"
+}

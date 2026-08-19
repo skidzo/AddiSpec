@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "0.2.0",
+  "specimenId": "ADDISPEC-PBF-THIN-WALL-40X05X20",
+  "exactGeometry": {
+    "valid": true,
+    "solids": 1,
+    "faces": 6,
+    "edges": 12,
+    "boundingBox": [
+      [
+        -40,
+        -0.5,
+        0
+      ],
+      [
+        0,
+        0,
+        20
+      ]
+    ],
+    "volumeMm3": 399.9999999999999
+  },
+  "canonicalDocument": {
+    "revision": 1,
+    "sha256": "ea80cbff037fd90870f2d79f0c1be3bf9c8b8154ef2966340e7b02d4d7271c32"
+  },
+  "artifact": {
+    "path": "geometry/ADDISPEC-PBF-THIN-WALL-40X05X20.step",
+    "bytes": 15864,
+    "sha256": "a8765342bf8fd6e8a27b8b9f8ef5a9a91c68c77fc660fd4e1935d931674e9b62"
+  },
+  "verificationScope": "digital geometry only"
+}

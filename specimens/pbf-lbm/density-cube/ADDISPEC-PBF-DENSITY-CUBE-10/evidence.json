@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "0.2.0",
+  "specimenId": "ADDISPEC-PBF-DENSITY-CUBE-10",
+  "exactGeometry": {
+    "valid": true,
+    "solids": 1,
+    "faces": 6,
+    "edges": 12,
+    "boundingBox": [
+      [
+        -10,
+        -10,
+        0
+      ],
+      [
+        0,
+        0,
+        10
+      ]
+    ],
+    "volumeMm3": 999.9999999999998
+  },
+  "canonicalDocument": {
+    "revision": 1,
+    "sha256": "b97094fa604f0df3987cbd1532ef4835f303d2a08d5bafca5d64a3ce03c6919e"
+  },
+  "artifact": {
+    "path": "geometry/ADDISPEC-PBF-DENSITY-CUBE-10.step",
+    "bytes": 15834,
+    "sha256": "c26c59e523b605cd4d447b6208c892023c83742fbf68c380cfdb53ab4d9ebc85"
+  },
+  "verificationScope": "digital geometry only"
+}
