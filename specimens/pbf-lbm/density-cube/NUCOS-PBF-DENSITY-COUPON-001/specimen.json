@@ -1,0 +1,66 @@
+{
+  "$schema": "../../../../schemas/specimen.schema.json",
+  "schemaVersion": "0.1.0",
+  "id": "NUCOS-PBF-DENSITY-COUPON-001",
+  "title": "PBF-LB/M density cube 10 mm",
+  "status": "digital-geometry-verified",
+  "process": {
+    "category": "PBF-LB/M",
+    "idtaProcessReference": "IDTA 02033",
+    "normativeConformance": "not-assessed"
+  },
+  "purpose": [
+    "density measurement",
+    "digital-thread integration test"
+  ],
+  "design": {
+    "geometryFamily": "density-cube",
+    "units": "mm",
+    "coordinateSystem": "right-handed",
+    "nominalDimensions": {
+      "width": 10,
+      "depth": 10,
+      "height": 10
+    },
+    "buildOrientation": {
+      "buildAxis": "+Z",
+      "orientationStatus": "proposed-not-qualified"
+    },
+    "materialIntent": {
+      "designation": "316L",
+      "densityGPerMm3": 0.00799,
+      "status": "nominal-assumption"
+    }
+  },
+  "artifacts": [
+    {
+      "role": "exact-exchange-geometry",
+      "format": "STEP",
+      "path": "geometry/NUCOS-PBF-DENSITY-COUPON-001.step",
+      "sha256": "b7170db4b6888331ffee7e6e5c6fa2966e4772aeda0f097fd1b8964ff00c5f02",
+      "bytes": 15806
+    }
+  ],
+  "evidence": "evidence.json",
+  "mappings": [
+    "mappings/addibase-aas.json"
+  ],
+  "provenance": {
+    "createdBy": "NuCOS GmbH experiment",
+    "authoringSystem": "PartMode",
+    "sourceCommit": "fe88558a34c8d7a3e03b34c2a374ba5ce6febe9f",
+    "createdAt": "2026-08-19T22:05:53.666Z"
+  },
+  "qualification": {
+    "manufacturingQualified": false,
+    "missingEvidence": [
+      "build job",
+      "machine and parameter profile",
+      "build position",
+      "powder batch",
+      "measured density",
+      "measurement uncertainty",
+      "inspection method"
+    ]
+  }
+}

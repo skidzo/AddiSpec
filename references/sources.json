@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "0.1.0",
+  "sources": [
+    {
+      "id": "iso-astm-52902-2023",
+      "title": "Additive manufacturing — Test artifacts — Geometric capability assessment of additive manufacturing systems",
+      "publisher": "ISO/ASTM",
+      "url": "https://www.iso.org/standard/79683.html",
+      "role": "benchmarking framework",
+      "redistribution": "reference-only"
+    },
+    {
+      "id": "nist-am-test-artifact",
+      "title": "NIST Additive Manufacturing Test Artifact",
+      "publisher": "NIST",
+      "url": "https://www.nist.gov/el/intelligent-systems-division-73500/production-systems-group/nist-additive-manufacturing-test",
+      "role": "prior test artifact",
+      "redistribution": "reference-only"
+    },
+    {
+      "id": "nist-am-bench",
+      "title": "Additive Manufacturing Benchmark Test Series",
+      "publisher": "NIST",
+      "url": "https://www.nist.gov/ambench",
+      "role": "benchmark datasets and challenge problems",
+      "redistribution": "follow source dataset terms"
+    },
+    {
+      "id": "partmode",
+      "title": "PartMode",
+      "publisher": "BOMWiki",
+      "url": "https://github.com/BOMWiki/partmode",
+      "role": "authoring and exact-kernel experiment system",
+      "license": "AGPL-3.0-only",
+      "redistribution": "no PartMode source included"
+    }
+  ]
+}

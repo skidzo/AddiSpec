@@ -1,0 +1,65 @@
+{
+  "modelType": "NuCOS AddiBase qualification evidence proposal",
+  "assetAdministrationShell": {
+    "idShort": "NUCOS-PBF-DENSITY-COUPON-001",
+    "assetInformation": {
+      "globalAssetId": "urn:nucos:addibase:specimen:NUCOS-PBF-DENSITY-COUPON-001"
+    },
+    "submodels": {
+      "specimenDefinition": {
+        "geometryType": "density-coupon",
+        "nominalDimensionsMm": {
+          "width": 10,
+          "depth": 10,
+          "height": 10
+        },
+        "material": "316L"
+      },
+      "digitalEngineeringEvidence": {
+        "authoringSystem": "PartMode",
+        "authoringMode": "typed-headless-agent",
+        "documentRevision": 2,
+        "canonicalDocumentHash": "b90907f316e90cc3e10c30c827a22509fb9ef3a715453e80819b67259d809900",
+        "exactKernelValidated": true,
+        "stepArtifact": {
+          "filename": "NUCOS-PBF-DENSITY-COUPON-001.step",
+          "bytes": 15806,
+          "sha256": "b7170db4b6888331ffee7e6e5c6fa2966e4772aeda0f097fd1b8964ff00c5f02"
+        },
+        "exactGeometry": {
+          "valid": true,
+          "solids": 1,
+          "faces": 6,
+          "edges": 12,
+          "boundingBox": [
+            [
+              -5,
+              -5,
+              0
+            ],
+            [
+              5,
+              5,
+              10
+            ]
+          ],
+          "volumeMm3": 999.9999999999998,
+          "expectedSurfaceAreaMm2": 600,
+          "expectedMassG": 7.99
+        }
+      },
+      "qualificationContext": {
+        "status": "geometry-created-not-manufacturing-qualified",
+        "missingLinks": [
+          "build-job identifier",
+          "machine and parameter profile",
+          "build position and orientation",
+          "powder batch",
+          "measured density and uncertainty",
+          "inspection method and laboratory result"
+        ]
+      }
+    }
+  }
+}
+

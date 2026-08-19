@@ -1,0 +1,64 @@
+{
+  "experiment": "NuCOS PartMode PBF-LB/M density coupon spike",
+  "generatedAt": "2026-08-19T22:05:53.666Z",
+  "partMode": {
+    "protocol": "partmode.cad.agent/v1",
+    "studioVersion": "7.1.0",
+    "kernelVersion": "replicad-open-cascade/runtime-5A",
+    "exactKernel": true
+  },
+  "specimen": {
+    "id": "NUCOS-PBF-DENSITY-COUPON-001",
+    "material": "316L",
+    "densityGPerMm3": 0.00799,
+    "widthMm": 10,
+    "depthMm": 10,
+    "initialHeightMm": 8,
+    "finalHeightMm": 10
+  },
+  "revisionHistory": [
+    {
+      "revision": 1,
+      "heightMm": 8,
+      "documentHash": "9325c08e0ff556f4a95246d67ff0f90680a02a4c46e974763098e3ffb370dbfc"
+    },
+    {
+      "revision": 2,
+      "heightMm": 10,
+      "documentHash": "b90907f316e90cc3e10c30c827a22509fb9ef3a715453e80819b67259d809900"
+    }
+  ],
+  "exactGeometry": {
+    "valid": true,
+    "solids": 1,
+    "faces": 6,
+    "edges": 12,
+    "boundingBox": [
+      [
+        -5,
+        -5,
+        0
+      ],
+      [
+        5,
+        5,
+        10
+      ]
+    ],
+    "volumeMm3": 999.9999999999998,
+    "expectedSurfaceAreaMm2": 600,
+    "expectedMassG": 7.99
+  },
+  "artifacts": {
+    "step": {
+      "filename": "NUCOS-PBF-DENSITY-COUPON-001.step",
+      "bytes": 15806,
+      "sha256": "b7170db4b6888331ffee7e6e5c6fa2966e4772aeda0f097fd1b8964ff00c5f02"
+    },
+    "canonicalDocument": {
+      "revision": 2,
+      "sha256": "b90907f316e90cc3e10c30c827a22509fb9ef3a715453e80819b67259d809900"
+    }
+  }
+}
+
