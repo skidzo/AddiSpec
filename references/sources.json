@@ -1,5 +1,6 @@
 {
-  "schemaVersion": "0.1.0",
+  "$schema": "../schemas/sources.schema.json",
+  "schemaVersion": "0.2.0",
   "sources": [
     {
       "id": "iso-astm-52902-2023",
@@ -7,6 +8,22 @@
       "publisher": "ISO/ASTM",
       "url": "https://www.iso.org/standard/79683.html",
       "role": "benchmarking framework",
+      "redistribution": "reference-only"
+    },
+    {
+      "id": "iso-17295-2023",
+      "title": "Additive manufacturing — General principles — Part positioning, coordinates and orientation",
+      "publisher": "ISO",
+      "url": "https://www.iso.org/standard/76471.html",
+      "role": "position, coordinate-system and orientation reference",
+      "redistribution": "reference-only"
+    },
+    {
+      "id": "iso-astm-52909-2024",
+      "title": "Additive manufacturing of metals — Finished part properties — Orientation and location dependence of mechanical properties for metal parts",
+      "publisher": "ISO/ASTM",
+      "url": "https://www.iso.org/standard/87956.html",
+      "role": "mechanical-property specimen orientation and location reporting reference",
       "redistribution": "reference-only"
     },
     {
@@ -24,6 +41,28 @@
       "url": "https://www.nist.gov/ambench",
       "role": "benchmark datasets and challenge problems",
       "redistribution": "follow source dataset terms"
+    },
+    {
+      "id": "nist-am-data-registration-2021",
+      "title": "Microstructure and Mechanical Test Data Alignment for Additive Manufacturing Data Registration",
+      "publisher": "NIST",
+      "url": "https://www.nist.gov/publications/microstructure-and-tensile-test-data-alignment-additive-manufacturing-data-registration",
+      "role": "coordinate-frame and measurement-data registration method",
+      "redistribution": "reference-only"
+    },
+    {
+      "id": "xu-et-al-2026-al-fe-cr-pbf-lb",
+      "title": "Roles of added Cr element in high-temperature mechanical performance of Al-Fe alloy fabricated by laser-beam powder bed fusion",
+      "publisher": "Journal of Alloys and Compounds / Elsevier",
+      "url": "https://doi.org/10.1016/j.jallcom.2026.190924",
+      "role": "spatial-lineage case study for extracted tensile specimens and measurement regions",
+      "publicationStatus": "journal-pre-proof",
+      "reviewStatus": "geometry-and-citation-details-require-version-of-record-review",
+      "sourceArtifact": {
+        "bytes": 2250170,
+        "sha256": "0edee55b1200cc222c576caf58ee8afe2fd6aeaaa907bd345a89bc9a61082c85"
+      },
+      "redistribution": "reference-only; source PDF not included"
     },
     {
       "id": "partmode",

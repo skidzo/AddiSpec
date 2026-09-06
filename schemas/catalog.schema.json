@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/skidzo/AddiSpec/schemas/catalog.schema.json",
+  "title": "AddiSpec catalogue",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "process",
+    "specimenCount",
+    "templateCount",
+    "experimentalRecordCount",
+    "specimens"
+  ],
+  "properties": {
+    "$schema": { "type": "string", "minLength": 1 },
+    "schemaVersion": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "process": { "type": "string", "minLength": 1 },
+    "specimenCount": { "type": "integer", "minimum": 0 },
+    "templateCount": { "type": "integer", "minimum": 0 },
+    "experimentalRecordCount": { "type": "integer", "minimum": 0 },
+    "specimens": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "entryKind", "family", "title", "purpose"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Z0-9][A-Z0-9._-]+$"
+          },
+          "entryKind": {
+            "enum": ["template", "experimental-record"]
+          },
+          "family": { "type": "string", "minLength": 1 },
+          "title": { "type": "string", "minLength": 1 },
+          "purpose": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    }
+  }
+}

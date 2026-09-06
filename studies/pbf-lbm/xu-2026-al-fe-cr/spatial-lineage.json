@@ -1,0 +1,417 @@
+{
+  "$schema": "../../../schemas/spatial-lineage.schema.json",
+  "schemaVersion": "0.1.0",
+  "id": "ADDISPEC-STUDY-XU-2026-AL-FE-CR",
+  "title": "Reported spatial lineage for Al-2.5Fe-2Cr tensile and microstructure specimens",
+  "process": "PBF-LB/M",
+  "sourceRefs": [
+    "xu-et-al-2026-al-fe-cr-pbf-lb"
+  ],
+  "entities": [
+    {
+      "id": "printed-block",
+      "scope": "unspecified",
+      "role": "build-artifact",
+      "coordinateFrameRef": "block-frame",
+      "geometry": {
+        "family": "rectangular-block",
+        "definitionStatus": "incomplete",
+        "missingParameters": [
+          "depth",
+          "height",
+          "width"
+        ],
+        "notes": [
+          "The source reports large rectangular samples but gives no numeric block dimensions."
+        ]
+      }
+    },
+    {
+      "id": "tensile-bd-parallel",
+      "scope": "cohort",
+      "role": "derived-test-specimen",
+      "coordinateFrameRef": "tensile-parallel-frame",
+      "geometry": {
+        "family": "rod-shaped-tensile",
+        "definitionStatus": "incomplete",
+        "missingParameters": [
+          "cutting-method",
+          "gauge-diameter",
+          "gauge-length",
+          "grip-geometry",
+          "machining-allowance",
+          "overall-length",
+          "test-standard"
+        ],
+        "notes": [
+          "The loading direction is reported parallel to the build direction."
+        ]
+      }
+    },
+    {
+      "id": "tensile-bd-perpendicular",
+      "scope": "cohort",
+      "role": "derived-test-specimen",
+      "coordinateFrameRef": "tensile-perpendicular-frame",
+      "geometry": {
+        "family": "rod-shaped-tensile",
+        "definitionStatus": "incomplete",
+        "missingParameters": [
+          "azimuth-around-build-direction",
+          "cutting-method",
+          "gauge-diameter",
+          "gauge-length",
+          "grip-geometry",
+          "machining-allowance",
+          "overall-length",
+          "test-standard"
+        ],
+        "notes": [
+          "The loading direction is reported perpendicular to the build direction; its build-plane azimuth is not reported."
+        ]
+      }
+    },
+    {
+      "id": "microstructure-section",
+      "scope": "unspecified",
+      "role": "prepared-sample",
+      "coordinateFrameRef": "microstructure-section-frame",
+      "geometry": {
+        "family": "cross-section",
+        "definitionStatus": "incomplete",
+        "missingParameters": [
+          "absolute-location-in-block",
+          "in-plane-azimuth",
+          "section-thickness"
+        ],
+        "notes": [
+          "The observation plane is reported parallel to the build direction."
+        ]
+      }
+    },
+    {
+      "id": "fracture-surface-bd-parallel",
+      "scope": "cohort",
+      "role": "fracture-artifact",
+      "coordinateFrameRef": "fracture-parallel-frame",
+      "geometry": {
+        "family": "observed-fracture-surface",
+        "definitionStatus": "not-applicable",
+        "notes": [
+          "Observed after tensile rupture; no nominal CAD surface exists."
+        ]
+      }
+    },
+    {
+      "id": "fracture-surface-bd-perpendicular",
+      "scope": "cohort",
+      "role": "fracture-artifact",
+      "coordinateFrameRef": "fracture-perpendicular-frame",
+      "geometry": {
+        "family": "observed-fracture-surface",
+        "definitionStatus": "not-applicable",
+        "notes": [
+          "Observed after tensile rupture; no nominal CAD surface exists."
+        ]
+      }
+    }
+  ],
+  "coordinateFrames": [
+    {
+      "id": "build-platform-frame",
+      "frameType": "build-platform",
+      "transformToParent": {
+        "status": "not-applicable"
+      }
+    },
+    {
+      "id": "block-frame",
+      "frameType": "artifact",
+      "parentFrameRef": "build-platform-frame",
+      "transformToParent": {
+        "status": "not-reported"
+      }
+    },
+    {
+      "id": "tensile-parallel-frame",
+      "frameType": "sample",
+      "parentFrameRef": "block-frame",
+      "transformToParent": {
+        "status": "not-reported"
+      }
+    },
+    {
+      "id": "tensile-perpendicular-frame",
+      "frameType": "sample",
+      "parentFrameRef": "block-frame",
+      "transformToParent": {
+        "status": "not-reported"
+      }
+    },
+    {
+      "id": "microstructure-section-frame",
+      "frameType": "measurement",
+      "parentFrameRef": "block-frame",
+      "transformToParent": {
+        "status": "not-reported"
+      }
+    },
+    {
+      "id": "fracture-parallel-frame",
+      "frameType": "fracture-surface",
+      "parentFrameRef": "tensile-parallel-frame",
+      "transformToParent": {
+        "status": "not-reported"
+      }
+    },
+    {
+      "id": "fracture-perpendicular-frame",
+      "frameType": "fracture-surface",
+      "parentFrameRef": "tensile-perpendicular-frame",
+      "transformToParent": {
+        "status": "not-reported"
+      }
+    }
+  ],
+  "derivations": [
+    {
+      "type": "extracted-from",
+      "parentRef": "printed-block",
+      "childRef": "tensile-bd-parallel",
+      "evidence": {
+        "status": "reported",
+        "sourceRef": "xu-et-al-2026-al-fe-cr-pbf-lb",
+        "locator": "Experimental procedure and Figure 3(a)"
+      }
+    },
+    {
+      "type": "extracted-from",
+      "parentRef": "printed-block",
+      "childRef": "tensile-bd-perpendicular",
+      "evidence": {
+        "status": "reported",
+        "sourceRef": "xu-et-al-2026-al-fe-cr-pbf-lb",
+        "locator": "Experimental procedure and Figure 3(a)"
+      }
+    },
+    {
+      "type": "sectioned-from",
+      "parentRef": "printed-block",
+      "childRef": "microstructure-section",
+      "evidence": {
+        "status": "reported",
+        "sourceRef": "xu-et-al-2026-al-fe-cr-pbf-lb",
+        "locator": "Experimental procedure and Figure 3(a)"
+      }
+    },
+    {
+      "type": "fractured-from",
+      "parentRef": "tensile-bd-parallel",
+      "childRef": "fracture-surface-bd-parallel",
+      "evidence": {
+        "status": "reported",
+        "sourceRef": "xu-et-al-2026-al-fe-cr-pbf-lb",
+        "locator": "Figures 3(b) and 12"
+      }
+    },
+    {
+      "type": "fractured-from",
+      "parentRef": "tensile-bd-perpendicular",
+      "childRef": "fracture-surface-bd-perpendicular",
+      "evidence": {
+        "status": "reported",
+        "sourceRef": "xu-et-al-2026-al-fe-cr-pbf-lb",
+        "locator": "Figures 3(b) and 12"
+      }
+    }
+  ],
+  "orientationConstraints": [
+    {
+      "id": "loading-parallel-to-build",
+      "subjectRef": "tensile-bd-parallel",
+      "relationType": "axis-to-axis",
+      "first": {
+        "frameRef": "tensile-parallel-frame",
+        "feature": "longitudinal-loading-axis"
+      },
+      "second": {
+        "frameRef": "build-platform-frame",
+        "feature": "positive-build-direction"
+      },
+      "angleDeg": 0,
+      "azimuthStatus": "not-reported",
+      "evidence": {
+        "status": "reported-text-and-schematic",
+        "sourceRef": "xu-et-al-2026-al-fe-cr-pbf-lb",
+        "locator": "Figures 3(a), 10 and 11"
+      }
+    },
+    {
+      "id": "loading-perpendicular-to-build",
+      "subjectRef": "tensile-bd-perpendicular",
+      "relationType": "axis-to-axis",
+      "first": {
+        "frameRef": "tensile-perpendicular-frame",
+        "feature": "longitudinal-loading-axis"
+      },
+      "second": {
+        "frameRef": "build-platform-frame",
+        "feature": "positive-build-direction"
+      },
+      "angleDeg": 90,
+      "azimuthStatus": "not-reported",
+      "evidence": {
+        "status": "reported-text-and-schematic",
+        "sourceRef": "xu-et-al-2026-al-fe-cr-pbf-lb",
+        "locator": "Figures 3(a), 10 and 11"
+      }
+    },
+    {
+      "id": "observation-plane-parallel-to-build",
+      "subjectRef": "microstructure-section",
+      "relationType": "axis-to-plane",
+      "first": {
+        "frameRef": "build-platform-frame",
+        "feature": "positive-build-direction"
+      },
+      "second": {
+        "frameRef": "microstructure-section-frame",
+        "feature": "observation-plane"
+      },
+      "angleDeg": 0,
+      "azimuthStatus": "not-reported",
+      "evidence": {
+        "status": "reported-text-and-schematic",
+        "sourceRef": "xu-et-al-2026-al-fe-cr-pbf-lb",
+        "locator": "Experimental procedure and Figure 3(a)"
+      }
+    }
+  ],
+  "measurementRegions": [
+    {
+      "id": "microstructure-cross-section",
+      "entityRef": "microstructure-section",
+      "kind": "plane",
+      "locationStatus": "not-reported",
+      "orientationStatus": "reported-constraint",
+      "anchor": "Cross-sectional surface parallel to the build direction",
+      "evidence": {
+        "status": "reported",
+        "sourceRef": "xu-et-al-2026-al-fe-cr-pbf-lb",
+        "locator": "Experimental procedure and Figure 3(a)"
+      }
+    },
+    {
+      "id": "ebsd-region",
+      "entityRef": "microstructure-section",
+      "kind": "plane",
+      "locationStatus": "feature-relative",
+      "orientationStatus": "reported-constraint",
+      "size": {
+        "values": [200, 200],
+        "unit": "um"
+      },
+      "anchor": "Region containing several melt pools; absolute location is not reported",
+      "evidence": {
+        "status": "reported",
+        "sourceRef": "xu-et-al-2026-al-fe-cr-pbf-lb",
+        "locator": "Experimental procedure"
+      }
+    },
+    {
+      "id": "nanoindentation-grid-at-melt-pool-boundary",
+      "entityRef": "microstructure-section",
+      "kind": "grid",
+      "locationStatus": "feature-relative",
+      "orientationStatus": "not-reported",
+      "samplingGrid": {
+        "rows": 10,
+        "columns": 25,
+        "spacing": {
+          "value": 0.7,
+          "unit": "um"
+        }
+      },
+      "anchor": "Specific area containing a melt-pool boundary",
+      "evidence": {
+        "status": "reported",
+        "sourceRef": "xu-et-al-2026-al-fe-cr-pbf-lb",
+        "locator": "Experimental procedure"
+      }
+    },
+    {
+      "id": "fracture-region-bd-parallel",
+      "entityRef": "fracture-surface-bd-parallel",
+      "kind": "fracture-surface",
+      "locationStatus": "derived-from-test",
+      "orientationStatus": "not-reported",
+      "evidence": {
+        "status": "reported",
+        "sourceRef": "xu-et-al-2026-al-fe-cr-pbf-lb",
+        "locator": "Figures 3(b) and 12"
+      }
+    },
+    {
+      "id": "fracture-region-bd-perpendicular",
+      "entityRef": "fracture-surface-bd-perpendicular",
+      "kind": "fracture-surface",
+      "locationStatus": "derived-from-test",
+      "orientationStatus": "not-reported",
+      "evidence": {
+        "status": "reported",
+        "sourceRef": "xu-et-al-2026-al-fe-cr-pbf-lb",
+        "locator": "Figures 3(b) and 12"
+      }
+    }
+  ],
+  "reportedContext": {
+    "material": {
+      "nominalCompositionMassPercent": {
+        "Al": "balance",
+        "Cr": 2,
+        "Fe": 2.5
+      },
+      "measuredPowderCompositionMassPercent": {
+        "Al": "balance",
+        "Cr": 1.82,
+        "Fe": 2.5,
+        "Si": 0.07
+      }
+    },
+    "machine": "3D Systems ProX DMP 200",
+    "selectedProcessParameters": {
+      "beamSpotDiameterMm": 0.1,
+      "hatchDistanceUm": 100,
+      "laserPowerW": 204,
+      "layerThicknessUm": 30,
+      "scanSpeedMPerS": 0.8
+    },
+    "scanStrategy": {
+      "interLayerRotationDeg": 90,
+      "regionSequence": "non-adjacent",
+      "reportedSurfacePattern": "hexagonal"
+    },
+    "tensileTest": {
+      "atmosphere": "air",
+      "heatingRateCPerS": 0.1,
+      "holdTimeS": 900,
+      "replicatesPerTemperatureAndDirection": 2,
+      "strainRatePerS": 0.001,
+      "temperaturesC": [25, 100, 200, 250, 300]
+    }
+  },
+  "evidenceGaps": [
+    "Absolute extraction coordinates within the printed block are not reported.",
+    "The final tensile-specimen dimensions and governing test standard are not reported.",
+    "The cutting and machining route is not reported.",
+    "The parent block dimensions and build-platform placement are not reported.",
+    "The perpendicular specimens' azimuth relative to machine, recoater, gas-flow and scan coordinates is not reported.",
+    "The in-text references used for the Al-2.5Fe comparison appear inconsistent with bibliography entries [20] and [22] in this pre-proof and require version-of-record review.",
+    "The source is a journal pre-proof and should be reviewed against the version of record before claim promotion."
+  ],
+  "notes": [
+    "This record captures only reported spatial relationships and explicit evidence gaps.",
+    "It is not a reconstruction of the study geometry, a standards-conformance claim or a manufacturing-qualified specimen definition.",
+    "The source PDF is not redistributed by AddiSpec."
+  ]
+}
