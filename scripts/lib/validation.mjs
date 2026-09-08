@@ -172,6 +172,7 @@ export function validateRightHandedBasis(basis, tolerance = 1e-6) {
     return ['basis must contain x, y and z vectors with three components each'];
   }
 
+  if (!['x', 'y', 'z'].every(axis => basis[axis].every(Number.isFinite))) return ['basis components must be finite numbers'];
   const errors = [];
   for (const axis of ['x', 'y', 'z']) {
     if (Math.abs(norm(basis[axis]) - 1) > tolerance) errors.push(`${axis} axis is not normalized`);
@@ -184,6 +185,7 @@ export function validateRightHandedBasis(basis, tolerance = 1e-6) {
 }
 
 export function findDirectedCycle(nodes, edges) {
+  nodes = [...nodes];
   const adjacency = new Map([...nodes].map(node => [node, []]));
   for (const [from, to] of edges) adjacency.get(from)?.push(to);
 

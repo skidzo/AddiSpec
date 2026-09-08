@@ -1,6 +1,6 @@
 {
-  "$schema": "../../../../schemas/specimen.schema.json",
-  "schemaVersion": "0.2.0",
+  "$schema": "../../../../schemas/0.3.0/specimen.schema.json",
+  "schemaVersion": "0.3.0",
   "id": "ADDISPEC-PBF-DENSITY-CUBE-10",
   "title": "Density cube 10 mm",
   "entityType": "Specimen",

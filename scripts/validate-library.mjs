@@ -2,12 +2,8 @@ import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { dirname, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import {
-  findDirectedCycle,
-  validateAgainstSchema,
-  validateRightHandedBasis,
-  validateSupportedSchema
-} from './lib/validation.mjs';
+import { validateDocument as checkDocument } from './lib/contracts.mjs';
+import { validateSpatialRecord } from './lib/spatial.mjs';
 
 const defaultRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -42,7 +38,6 @@ function findDuplicates(values) {
 
 export function validateLibrary(root = defaultRoot) {
   const failures = [];
-  const schemaCache = new Map();
 
   function label(path) {
     return relative(root, path);
@@ -57,40 +52,15 @@ export function validateLibrary(root = defaultRoot) {
     }
   }
 
-  function validateDocument(path, document) {
-    if (!document || typeof document.$schema !== 'string') {
-      failures.push(`${label(path)}: missing local $schema reference`);
-      return;
-    }
-
-    const schemaPath = resolve(dirname(path), document.$schema);
-    if (!isInside(root, schemaPath)) {
-      failures.push(`${label(path)}: $schema resolves outside the repository`);
-      return;
-    }
-    if (!existsSync(schemaPath)) {
-      failures.push(`${label(path)}: missing schema ${document.$schema}`);
-      return;
-    }
-
-    let schema = schemaCache.get(schemaPath);
-    if (!schema) {
-      schema = readJson(schemaPath);
-      if (!schema) return;
-      for (const error of validateSupportedSchema(schema)) {
-        failures.push(`${label(schemaPath)}: ${error}`);
-      }
-      schemaCache.set(schemaPath, schema);
-    }
-
-    for (const error of validateAgainstSchema(document, schema)) {
-      failures.push(`${label(path)}: ${error}`);
-    }
+  function validateDocument(path, kind, document) {
+    const errors = checkDocument(root, path, kind, document);
+    failures.push(...errors.map(error => label(path) + ': ' + error));
+    return errors.length === 0;
   }
 
   const sourcesPath = join(root, 'references', 'sources.json');
-  const sources = readJson(sourcesPath);
-  if (sources) validateDocument(sourcesPath, sources);
+  let sources = readJson(sourcesPath);
+  if (sources && !validateDocument(sourcesPath, 'sources', sources)) sources = null;
   const sourceEntries = Array.isArray(sources?.sources) ? sources.sources : [];
   const sourceIds = new Set(sourceEntries.map(source => source.id));
   for (const duplicate of findDuplicates(sourceEntries.map(source => source.id))) {
@@ -103,7 +73,7 @@ export function validateLibrary(root = defaultRoot) {
   for (const path of specimenPaths) {
     const specimen = readJson(path);
     if (!specimen) continue;
-    validateDocument(path, specimen);
+    if (!validateDocument(path, 'specimen', specimen)) continue;
     specimens.push({ path, specimen });
 
     for (const artifact of specimen.artifacts ?? []) {
@@ -146,8 +116,8 @@ export function validateLibrary(root = defaultRoot) {
   }
 
   const catalogPath = join(root, 'catalog.json');
-  const catalog = readJson(catalogPath);
-  if (catalog) validateDocument(catalogPath, catalog);
+  let catalog = readJson(catalogPath);
+  if (catalog && !validateDocument(catalogPath, 'catalog', catalog)) catalog = null;
   const catalogEntries = Array.isArray(catalog?.specimens) ? catalog.specimens : [];
 
   for (const duplicate of findDuplicates(catalogEntries.map(entry => entry.id))) {
@@ -195,127 +165,10 @@ export function validateLibrary(root = defaultRoot) {
   for (const path of lineagePaths) {
     const record = readJson(path);
     if (!record) continue;
-    validateDocument(path, record);
+    if (!validateDocument(path, 'spatial-lineage', record)) continue;
     lineages.push({ path, record });
-
-    const declaredSourceRefs = new Set(record.sourceRefs ?? []);
-    for (const sourceRef of declaredSourceRefs) {
-      if (!sourceIds.has(sourceRef)) failures.push(`${label(path)}: unknown sourceRef ${sourceRef}`);
-    }
-
-    const entities = Array.isArray(record.entities) ? record.entities : [];
-    const frames = Array.isArray(record.coordinateFrames) ? record.coordinateFrames : [];
-    const entityIds = new Set(entities.map(entity => entity.id));
-    const frameIds = new Set(frames.map(frame => frame.id));
-
-    for (const duplicate of findDuplicates(entities.map(entity => entity.id))) {
-      failures.push(`${label(path)}: duplicate entity id ${duplicate}`);
-    }
-    for (const duplicate of findDuplicates(frames.map(frame => frame.id))) {
-      failures.push(`${label(path)}: duplicate coordinate-frame id ${duplicate}`);
-    }
-
-    for (const entity of entities) {
-      if (entity.coordinateFrameRef && !frameIds.has(entity.coordinateFrameRef)) {
-        failures.push(`${label(path)}: entity ${entity.id} references unknown frame ${entity.coordinateFrameRef}`);
-      }
-      if (entity.geometry?.definitionStatus === 'incomplete' && !(entity.geometry.missingParameters?.length > 0)) {
-        failures.push(`${label(path)}: incomplete geometry ${entity.id} must list missingParameters`);
-      }
-    }
-
-    for (const frame of frames) {
-      const transform = frame.transformToParent ?? {};
-      const valueBearingStatus = ['exact', 'measured', 'estimated'].includes(transform.status);
-      if (frame.parentFrameRef && !frameIds.has(frame.parentFrameRef)) {
-        failures.push(`${label(path)}: frame ${frame.id} references unknown parent ${frame.parentFrameRef}`);
-      }
-      if (!frame.parentFrameRef && transform.status !== 'not-applicable') {
-        failures.push(`${label(path)}: root frame ${frame.id} must use transform status not-applicable`);
-      }
-      if (frame.parentFrameRef && transform.status === 'not-applicable') {
-        failures.push(`${label(path)}: child frame ${frame.id} cannot use transform status not-applicable`);
-      }
-      if (valueBearingStatus) {
-        if (!frame.parentFrameRef) failures.push(`${label(path)}: located frame ${frame.id} requires a parent frame`);
-        if (transform.model !== 'rigid') {
-          failures.push(`${label(path)}: ${transform.status} transform for ${frame.id} requires model rigid`);
-        }
-        if (!transform.translationMm || !transform.basis) {
-          failures.push(`${label(path)}: ${transform.status} transform for ${frame.id} requires translationMm and basis`);
-        } else {
-          for (const error of validateRightHandedBasis(transform.basis)) {
-            failures.push(`${label(path)}: frame ${frame.id}: ${error}`);
-          }
-        }
-      } else if (transform.model || transform.translationMm || transform.basis || transform.uncertaintyMm !== undefined) {
-        failures.push(`${label(path)}: ${transform.status} transform for ${frame.id} must not contain numeric transform values`);
-      }
-    }
-
-    const frameCycle = findDirectedCycle(
-      frameIds,
-      frames.filter(frame => frame.parentFrameRef).map(frame => [frame.id, frame.parentFrameRef])
-    );
-    if (frameCycle) failures.push(`${label(path)}: coordinate-frame cycle ${frameCycle.join(' -> ')}`);
-
-    function validateEvidence(evidence, context) {
-      if (!evidence?.sourceRef) return;
-      if (!sourceIds.has(evidence.sourceRef)) {
-        failures.push(`${label(path)}: ${context} references unknown source ${evidence.sourceRef}`);
-      } else if (!declaredSourceRefs.has(evidence.sourceRef)) {
-        failures.push(`${label(path)}: ${context} source ${evidence.sourceRef} is absent from sourceRefs`);
-      }
-    }
-
-    const derivations = Array.isArray(record.derivations) ? record.derivations : [];
-    for (const derivation of derivations) {
-      if (!entityIds.has(derivation.parentRef)) {
-        failures.push(`${label(path)}: derivation references unknown parent ${derivation.parentRef}`);
-      }
-      if (!entityIds.has(derivation.childRef)) {
-        failures.push(`${label(path)}: derivation references unknown child ${derivation.childRef}`);
-      }
-      if (derivation.parentRef === derivation.childRef) {
-        failures.push(`${label(path)}: derivation cannot reference ${derivation.parentRef} as both parent and child`);
-      }
-      validateEvidence(derivation.evidence, `derivation ${derivation.parentRef} -> ${derivation.childRef}`);
-    }
-    const derivationCycle = findDirectedCycle(
-      entityIds,
-      derivations.map(derivation => [derivation.parentRef, derivation.childRef])
-    );
-    if (derivationCycle) failures.push(`${label(path)}: derivation cycle ${derivationCycle.join(' -> ')}`);
-
-    const orientationConstraints = Array.isArray(record.orientationConstraints) ? record.orientationConstraints : [];
-    for (const duplicate of findDuplicates(orientationConstraints.map(constraint => constraint.id))) {
-      failures.push(`${label(path)}: duplicate orientation-constraint id ${duplicate}`);
-    }
-    for (const constraint of orientationConstraints) {
-      if (!entityIds.has(constraint.subjectRef)) {
-        failures.push(`${label(path)}: orientation ${constraint.id} references unknown subject ${constraint.subjectRef}`);
-      }
-      for (const side of ['first', 'second']) {
-        const frameRef = constraint[side]?.frameRef;
-        if (frameRef && !frameIds.has(frameRef)) {
-          failures.push(`${label(path)}: orientation ${constraint.id} references unknown frame ${frameRef}`);
-        }
-      }
-      validateEvidence(constraint.evidence, `orientation ${constraint.id}`);
-    }
-
-    const measurementRegions = Array.isArray(record.measurementRegions) ? record.measurementRegions : [];
-    for (const duplicate of findDuplicates(measurementRegions.map(region => region.id))) {
-      failures.push(`${label(path)}: duplicate measurement-region id ${duplicate}`);
-    }
-    for (const region of measurementRegions) {
-      if (!entityIds.has(region.entityRef)) {
-        failures.push(`${label(path)}: measurement region ${region.id} references unknown entity ${region.entityRef}`);
-      }
-      if (region.kind === 'grid' && !region.samplingGrid) {
-        failures.push(`${label(path)}: grid measurement region ${region.id} requires samplingGrid`);
-      }
-      validateEvidence(region.evidence, `measurement region ${region.id}`);
+    for (const error of validateSpatialRecord(record, sourceIds, dirname(path))) {
+      failures.push(label(path) + ': ' + error);
     }
   }
 

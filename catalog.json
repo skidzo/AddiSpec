@@ -1,5 +1,5 @@
 {
-  "$schema": "schemas/catalog.schema.json",
+  "$schema": "schemas/0.3.0/catalog.schema.json",
   "schemaVersion": "0.3.0",
   "process": "PBF-LB/M",
   "specimenCount": 19,

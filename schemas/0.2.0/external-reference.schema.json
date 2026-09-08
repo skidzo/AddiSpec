@@ -1,0 +1,293 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/skidzo/AddiSpec/schemas/0.2.0/external-reference.schema.json",
+  "title": "External instance reference (offline evidence contract)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "system",
+    "namespace",
+    "endpoint",
+    "kind",
+    "relation",
+    "identifiers",
+    "provenance",
+    "resolution"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "system": {
+      "type": "string",
+      "minLength": 1
+    },
+    "namespace": {
+      "type": "string",
+      "pattern": "^[a-zA-Z][a-zA-Z0-9+.-]*:[^\\s]+$"
+    },
+    "endpoint": {
+      "type": "string",
+      "pattern": "^[a-zA-Z][a-zA-Z0-9+.-]*:[^\\s]+$"
+    },
+    "kind": {
+      "enum": [
+        "aas",
+        "external"
+      ]
+    },
+    "relation": {
+      "enum": [
+        "machine",
+        "build",
+        "build-platform",
+        "build-artifact",
+        "specimen-instance",
+        "layer",
+        "laser-unit",
+        "scan-strategy",
+        "process-parameters",
+        "material-batch",
+        "nominal-geometry",
+        "placement",
+        "measurement",
+        "qualification",
+        "storage",
+        "heat-treatment",
+        "calibration"
+      ]
+    },
+    "identifiers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [],
+      "properties": {
+        "assetId": {
+          "type": "string",
+          "pattern": "^[a-zA-Z][a-zA-Z0-9+.-]*:[^\\s]+$"
+        },
+        "submodelId": {
+          "type": "string",
+          "pattern": "^[a-zA-Z][a-zA-Z0-9+.-]*:[^\\s]+$"
+        },
+        "entityId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "elementPath": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "expectedModel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "templateId",
+        "version",
+        "revision",
+        "semanticId",
+        "sourceRevision"
+      ],
+      "properties": {
+        "templateId": {
+          "type": "string",
+          "pattern": "^[a-zA-Z][a-zA-Z0-9+.-]*:[^\\s]+$"
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "semanticId": {
+          "type": "string",
+          "pattern": "^[a-zA-Z][a-zA-Z0-9+.-]*:[^\\s]+$"
+        },
+        "sourceRevision": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "sourceRef",
+        "locator"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "reported",
+            "measured",
+            "computed",
+            "estimated",
+            "schematic-only",
+            "not-reported"
+          ]
+        },
+        "sourceRef": {
+          "type": "string",
+          "minLength": 1
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "method": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "resolution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "not-attempted",
+            "resolved",
+            "unresolved"
+          ]
+        },
+        "checkedAt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "identifiers"
+          ],
+          "properties": {
+            "identifiers": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [],
+              "properties": {
+                "assetId": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z][a-zA-Z0-9+.-]*:[^\\s]+$"
+                },
+                "submodelId": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z][a-zA-Z0-9+.-]*:[^\\s]+$"
+                },
+                "entityId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "elementPath": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            "semanticId": {
+              "type": "string",
+              "pattern": "^[a-zA-Z][a-zA-Z0-9+.-]*:[^\\s]+$"
+            },
+            "version": {
+              "type": "string",
+              "minLength": 1
+            },
+            "revision": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes",
+        "capturedAt",
+        "revision",
+        "evidence"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "capturedAt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "sourceRef",
+            "locator"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "reported",
+                "measured",
+                "computed",
+                "estimated",
+                "schematic-only",
+                "not-reported"
+              ]
+            },
+            "sourceRef": {
+              "type": "string",
+              "minLength": 1
+            },
+            "locator": {
+              "type": "string",
+              "minLength": 1
+            },
+            "method": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    }
+  }
+}

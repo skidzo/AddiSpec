@@ -1,5 +1,5 @@
 {
-  "$schema": "../schemas/sources.schema.json",
+  "$schema": "../schemas/0.2.0/sources.schema.json",
   "schemaVersion": "0.2.0",
   "sources": [
     {
@@ -51,20 +51,6 @@
       "redistribution": "reference-only"
     },
     {
-      "id": "xu-et-al-2026-al-fe-cr-pbf-lb",
-      "title": "Roles of added Cr element in high-temperature mechanical performance of Al-Fe alloy fabricated by laser-beam powder bed fusion",
-      "publisher": "Journal of Alloys and Compounds / Elsevier",
-      "url": "https://doi.org/10.1016/j.jallcom.2026.190924",
-      "role": "spatial-lineage case study for extracted tensile specimens and measurement regions",
-      "publicationStatus": "journal-pre-proof",
-      "reviewStatus": "geometry-and-citation-details-require-version-of-record-review",
-      "sourceArtifact": {
-        "bytes": 2250170,
-        "sha256": "0edee55b1200cc222c576caf58ee8afe2fd6aeaaa907bd345a89bc9a61082c85"
-      },
-      "redistribution": "reference-only; source PDF not included"
-    },
-    {
       "id": "partmode",
       "title": "PartMode",
       "publisher": "BOMWiki",
@@ -72,6 +58,22 @@
       "role": "authoring and exact-kernel experiment system",
       "license": "AGPL-3.0-only",
       "redistribution": "no PartMode source included"
+    },
+    {
+      "id": "synthetic-reference-example",
+      "title": "Synthetic retained specimen and reference example",
+      "publisher": "AddiSpec",
+      "url": "https://github.com/skidzo/AddiSpec",
+      "role": "synthetic fixture definition, not measured production evidence",
+      "redistribution": "MIT"
+    },
+    {
+      "id": "idta-machine-review-0268784",
+      "title": "IDTA 02033 Machine review template at pinned repository revision",
+      "publisher": "skidzo/IDTA_submodel_metal_additive_manufacturing",
+      "url": "https://github.com/skidzo/IDTA_submodel_metal_additive_manufacturing/blob/0268784c107a147427591bb63f74d779713eb119/examples/idta-validation/IDTA%2002033-1-0_Template_Machine.aasx",
+      "role": "observed Machine template and semantic ID; not a final-release assertion",
+      "redistribution": "reference-only"
     }
   ]
 }

@@ -1,0 +1,108 @@
+{
+  "$schema": "../../../schemas/0.2.0/spatial-lineage.schema.json",
+  "schemaVersion": "0.2.0",
+  "id": "ADDISPEC-SYNTHETIC-RETAINED-01",
+  "title": "Synthetic retained specimen with coarse placement",
+  "process": "PBF-LB/M",
+  "sourceRefs": [
+    "synthetic-reference-example",
+    "idta-machine-review-0268784"
+  ],
+  "externalReferences": [
+    {
+      "id": "machine-ref",
+      "system": "aas",
+      "namespace": "urn:addispec:example",
+      "endpoint": "https://example.invalid/aas",
+      "kind": "aas",
+      "relation": "machine",
+      "identifiers": {
+        "assetId": "urn:addispec:example:machine",
+        "submodelId": "urn:addispec:example:machine-submodel"
+      },
+      "expectedModel": {
+        "templateId": "https://admin-shell.io/idta/SubmodelTemplate/Machine/1/0",
+        "version": "1",
+        "revision": "0",
+        "semanticId": "https://admin-shell.io/idta/cds/Machine/1",
+        "sourceRevision": "0268784c107a147427591bb63f74d779713eb119"
+      },
+      "provenance": {
+        "status": "reported",
+        "sourceRef": "synthetic-reference-example",
+        "locator": "README: synthetic fixture"
+      },
+      "resolution": {
+        "status": "not-attempted",
+        "reason": "Synthetic identifiers; no live AAS instance"
+      }
+    },
+    {
+      "id": "build-ref",
+      "system": "addiplan",
+      "namespace": "urn:addispec:example",
+      "endpoint": "https://example.invalid/builds",
+      "kind": "external",
+      "relation": "build",
+      "identifiers": {
+        "entityId": "synthetic-build-01"
+      },
+      "provenance": {
+        "status": "reported",
+        "sourceRef": "synthetic-reference-example",
+        "locator": "README: synthetic fixture"
+      },
+      "resolution": {
+        "status": "not-attempted"
+      }
+    }
+  ],
+  "entities": [
+    {
+      "id": "retained-coupon",
+      "scope": "individual",
+      "role": "build-artifact",
+      "usage": "retained",
+      "externalReferenceRefs": [
+        "machine-ref",
+        "build-ref"
+      ]
+    }
+  ],
+  "coordinateFrames": [],
+  "derivations": [],
+  "orientationConstraints": [],
+  "measurementRegions": [],
+  "placementObservations": [
+    {
+      "entityRef": "retained-coupon",
+      "referenceRef": "build-ref",
+      "kind": "build-zone",
+      "value": "U-LH",
+      "vocabulary": "urn:addispec:example:build-zones",
+      "evidence": {
+        "status": "reported",
+        "sourceRef": "synthetic-reference-example",
+        "locator": "README: synthetic fixture"
+      }
+    },
+    {
+      "entityRef": "retained-coupon",
+      "referenceRef": "build-ref",
+      "kind": "build-orientation",
+      "value": "standing",
+      "vocabulary": "urn:addispec:example:orientation-categories",
+      "evidence": {
+        "status": "reported",
+        "sourceRef": "synthetic-reference-example",
+        "locator": "README: synthetic fixture"
+      }
+    }
+  ],
+  "evidenceGaps": [
+    "Exact placement, azimuth, geometry and later laboratory results are not reported."
+  ],
+  "notes": [
+    "Entirely synthetic. No machine, process value or test result is copied. This is a retained specimen, not evidence that a part meets requirements."
+  ]
+}
