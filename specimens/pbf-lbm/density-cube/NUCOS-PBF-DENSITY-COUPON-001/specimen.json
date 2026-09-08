@@ -1,6 +1,6 @@
 {
-  "$schema": "../../../../schemas/specimen.schema.json",
-  "schemaVersion": "0.1.0",
+  "$schema": "../../../../schemas/0.3.0/specimen.schema.json",
+  "schemaVersion": "0.3.0",
   "id": "NUCOS-PBF-DENSITY-COUPON-001",
   "title": "PBF-LB/M density cube 10 mm",
   "status": "digital-geometry-verified",

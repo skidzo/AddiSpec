@@ -1,0 +1,239 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/skidzo/AddiSpec/schemas/0.3.0/specimen.schema.json",
+  "title": "AddiSpec specimen definition",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "id",
+    "title",
+    "status",
+    "process",
+    "purpose",
+    "design",
+    "artifacts",
+    "provenance",
+    "qualification"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "minLength": 1
+    },
+    "schemaVersion": {
+      "const": "0.3.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Z0-9][A-Z0-9._-]+$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "entityType": {
+      "const": "Specimen"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "digital-geometry-verified",
+        "manufacturing-validated",
+        "qualified"
+      ]
+    },
+    "process": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "category",
+        "normativeConformance"
+      ],
+      "properties": {
+        "category": {
+          "type": "string",
+          "minLength": 1
+        },
+        "idtaProcessReference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "normativeConformance": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "purpose": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "design": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "geometryFamily",
+        "units",
+        "coordinateSystem",
+        "nominalDimensions",
+        "buildOrientation"
+      ],
+      "properties": {
+        "geometryFamily": {
+          "type": "string",
+          "minLength": 1
+        },
+        "units": {
+          "type": "string",
+          "minLength": 1
+        },
+        "coordinateSystem": {
+          "type": "string",
+          "minLength": 1
+        },
+        "nominalDimensions": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        },
+        "buildOrientation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "buildAxis",
+            "orientationStatus"
+          ],
+          "properties": {
+            "buildAxis": {
+              "type": "string",
+              "minLength": 1
+            },
+            "orientationStatus": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "materialIntent": {
+          "type": "object"
+        }
+      }
+    },
+    "lifecycle": {
+      "type": "object"
+    },
+    "artifacts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "role",
+          "format",
+          "path",
+          "sha256",
+          "bytes"
+        ],
+        "properties": {
+          "role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "format": {
+            "type": "string",
+            "minLength": 1
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      }
+    },
+    "evidence": {
+      "type": "string",
+      "minLength": 1
+    },
+    "mappings": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "createdBy",
+        "authoringSystem",
+        "createdAt"
+      ],
+      "properties": {
+        "createdBy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authoringSystem": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceCommit": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "createdAt": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "qualification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "manufacturingQualified",
+        "missingEvidence"
+      ],
+      "properties": {
+        "manufacturingQualified": {
+          "type": "boolean"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "missingEvidence": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}

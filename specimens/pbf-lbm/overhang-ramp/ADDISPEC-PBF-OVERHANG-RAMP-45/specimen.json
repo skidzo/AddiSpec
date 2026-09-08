@@ -1,6 +1,6 @@
 {
-  "$schema": "../../../../schemas/specimen.schema.json",
-  "schemaVersion": "0.2.0",
+  "$schema": "../../../../schemas/0.3.0/specimen.schema.json",
+  "schemaVersion": "0.3.0",
   "id": "ADDISPEC-PBF-OVERHANG-RAMP-45",
   "title": "45 degree overhang ramp",
   "entityType": "Specimen",

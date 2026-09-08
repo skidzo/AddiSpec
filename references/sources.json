@@ -1,5 +1,6 @@
 {
-  "schemaVersion": "0.1.0",
+  "$schema": "../schemas/0.2.0/sources.schema.json",
+  "schemaVersion": "0.2.0",
   "sources": [
     {
       "id": "iso-astm-52902-2023",
@@ -7,6 +8,22 @@
       "publisher": "ISO/ASTM",
       "url": "https://www.iso.org/standard/79683.html",
       "role": "benchmarking framework",
+      "redistribution": "reference-only"
+    },
+    {
+      "id": "iso-17295-2023",
+      "title": "Additive manufacturing — General principles — Part positioning, coordinates and orientation",
+      "publisher": "ISO",
+      "url": "https://www.iso.org/standard/76471.html",
+      "role": "position, coordinate-system and orientation reference",
+      "redistribution": "reference-only"
+    },
+    {
+      "id": "iso-astm-52909-2024",
+      "title": "Additive manufacturing of metals — Finished part properties — Orientation and location dependence of mechanical properties for metal parts",
+      "publisher": "ISO/ASTM",
+      "url": "https://www.iso.org/standard/87956.html",
+      "role": "mechanical-property specimen orientation and location reporting reference",
       "redistribution": "reference-only"
     },
     {
@@ -26,6 +43,14 @@
       "redistribution": "follow source dataset terms"
     },
     {
+      "id": "nist-am-data-registration-2021",
+      "title": "Microstructure and Mechanical Test Data Alignment for Additive Manufacturing Data Registration",
+      "publisher": "NIST",
+      "url": "https://www.nist.gov/publications/microstructure-and-tensile-test-data-alignment-additive-manufacturing-data-registration",
+      "role": "coordinate-frame and measurement-data registration method",
+      "redistribution": "reference-only"
+    },
+    {
       "id": "partmode",
       "title": "PartMode",
       "publisher": "BOMWiki",
@@ -33,6 +58,22 @@
       "role": "authoring and exact-kernel experiment system",
       "license": "AGPL-3.0-only",
       "redistribution": "no PartMode source included"
+    },
+    {
+      "id": "synthetic-reference-example",
+      "title": "Synthetic retained specimen and reference example",
+      "publisher": "AddiSpec",
+      "url": "https://github.com/skidzo/AddiSpec",
+      "role": "synthetic fixture definition, not measured production evidence",
+      "redistribution": "MIT"
+    },
+    {
+      "id": "idta-machine-review-0268784",
+      "title": "IDTA 02033 Machine review template at pinned repository revision",
+      "publisher": "skidzo/IDTA_submodel_metal_additive_manufacturing",
+      "url": "https://github.com/skidzo/IDTA_submodel_metal_additive_manufacturing/blob/0268784c107a147427591bb63f74d779713eb119/examples/idta-validation/IDTA%2002033-1-0_Template_Machine.aasx",
+      "role": "observed Machine template and semantic ID; not a final-release assertion",
+      "redistribution": "reference-only"
     }
   ]
 }

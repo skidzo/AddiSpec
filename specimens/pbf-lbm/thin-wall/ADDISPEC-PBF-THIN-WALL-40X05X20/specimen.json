@@ -1,6 +1,6 @@
 {
-  "$schema": "../../../../schemas/specimen.schema.json",
-  "schemaVersion": "0.2.0",
+  "$schema": "../../../../schemas/0.3.0/specimen.schema.json",
+  "schemaVersion": "0.3.0",
   "id": "ADDISPEC-PBF-THIN-WALL-40X05X20",
   "title": "Thin-wall capability coupon",
   "entityType": "Specimen",

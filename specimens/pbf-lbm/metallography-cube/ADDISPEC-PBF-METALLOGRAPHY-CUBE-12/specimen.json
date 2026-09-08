@@ -1,6 +1,6 @@
 {
-  "$schema": "../../../../schemas/specimen.schema.json",
-  "schemaVersion": "0.2.0",
+  "$schema": "../../../../schemas/0.3.0/specimen.schema.json",
+  "schemaVersion": "0.3.0",
   "id": "ADDISPEC-PBF-METALLOGRAPHY-CUBE-12",
   "title": "Metallography cube",
   "entityType": "Specimen",
