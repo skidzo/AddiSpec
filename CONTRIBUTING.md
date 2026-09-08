@@ -18,13 +18,15 @@ Every specimen contribution must include:
 
 ## Spatial-lineage records
 
+Follow the [spatial contract](docs/spatial-contract.md), [reference contract](docs/external-references.md) and [migration policy](docs/migration.md).
+
 A spatial-lineage contribution must keep the nominal shape separate from the manufactured material history. It must:
 
 - identify the source record and a precise figure, table, or section locator for each reported relationship;
 - model each printed artifact, derived specimen, prepared sample, and fracture artifact as a distinct entity;
 - connect entities with typed, acyclic derivations;
-- give every spatial entity a local coordinate frame;
-- use an exact, measured, or estimated rigid parent transform only when translation and a right-handed orthonormal basis are available;
+- allow coarse entities without geometry or coordinate frames; never manufacture missing precision;
+- use numeric parent transforms only with documented direction, frame definitions, applicability and evidence; measured/computed/estimated transforms also need uncertainty;
 - use `not-reported` when a transform, placement, azimuth, or dimension is unavailable;
 - distinguish an exact transform from a reported angular constraint such as parallel or perpendicular;
 - record measurement regions and their location status without inventing absolute coordinates.

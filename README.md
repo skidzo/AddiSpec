@@ -49,23 +49,25 @@ A spatial-lineage record therefore provides:
 
 - typed entities for build artifacts, derived test specimens, prepared samples, and fracture artifacts;
 - explicit parent-child derivations such as `extracted-from`, `sectioned-from`, and `fractured-from`;
-- local coordinate frames with exact, measured, estimated, or explicitly unreported rigid transforms;
+- optional local coordinate frames with nominal-exact, reported, measured, computed, estimated, or explicitly unreported rigid transforms;
 - orientation constraints when a source reports only relationships such as parallel or perpendicular;
 - measurement regions such as planes, grids, and fracture surfaces;
 - evidence locators and explicit gaps instead of inferred geometry.
 
-See [`studies/pbf-lbm/xu-2026-al-fe-cr/spatial-lineage.json`](studies/pbf-lbm/xu-2026-al-fe-cr/spatial-lineage.json) for a literature-grounded example. It is intentionally not a reconstruction of the paper's unreported specimen geometry.
+See the [synthetic retained-specimen mapping](studies/pbf-lbm/synthetic-retained/README.md). Coarse categories are valid without geometry or coordinate frames. The Xu literature case is handled separately in the [AM Data Model Atlas](https://github.com/skidzo/AM-Data-Model-Atlas).
+
+The [approved ADR](docs/adr/0001-spatial-reference-contract.md) defines system ownership. See the [spatial contract](docs/spatial-contract.md), [external-reference contract](docs/external-references.md) and [breaking-change migration](docs/migration.md). Catalog and specimen contracts are 0.3.0; spatial lineage and sources are 0.2.0.
 
 ## Validation
 
-Requires Node.js 20 or newer:
+Requires Node.js 22 or 24:
 
 ```bash
 node --test scripts/*.test.mjs
 node scripts/validate-library.mjs
 ```
 
-The validation reads the referenced repository JSON Schemas and checks their supported structural constraints. It also checks catalogue completeness, source references, artifact presence, path containment, SHA-256 integrity, basic STEP identity, coordinate-frame bases and cycles, derivation cycles, and cross-record references. It does not establish physical conformance or certification.
+The validation selects registered, versioned repository JSON Schemas and checks their supported structural constraints; documents cannot select a weaker schema. It also checks catalogue completeness, source references, artifact presence, path containment, SHA-256 integrity, basic STEP identity, coordinate-frame bases and cycles, derivation cycles, and cross-record references. It does not establish physical conformance or certification.
 
 ## Contribution principles
 
