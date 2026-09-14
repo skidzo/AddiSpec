@@ -24,8 +24,8 @@
       "nominalOverhangAngleDeg": 45
     },
     "buildOrientation": {
-      "buildAxis": "+Z",
-      "orientationStatus": "template-not-qualified"
+      "buildAxis": "-Y",
+      "orientationStatus": "corrected-nominal-direction-not-qualified"
     }
   },
   "lifecycle": {
@@ -49,7 +49,9 @@
   "qualification": {
     "manufacturingQualified": false,
     "limitations": [
-      "Support strategy and angle reference convention must be defined by the Build Job."
+      "buildAxis is expressed in the stored STEP frame. The intended growth direction is -Y, not +Z; the latter produces a vertical wall rather than an inclined downskin.",
+      "The core-four benchmark maps source -Y to model +Z with a -90 degree rotation about X and a 10 mm translation along model Z.",
+      "The nominal downskin is 45 degrees to the build plane. Support strategy, actual machine placement and physical process capability remain unqualified."
     ],
     "missingEvidence": [
       "Build Job",
@@ -60,5 +62,6 @@
       "measurement result and uncertainty",
       "release decision"
     ]
-  }
+  },
+  "evidence": "evidence.json"
 }
