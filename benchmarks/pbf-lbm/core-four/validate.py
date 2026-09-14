@@ -44,6 +44,21 @@ def matrix(transform):
     return [axes[j][i] if j < 3 else t[i] for i in range(3) for j in range(4)] + [0, 0, 0, 1]
 
 
+def apply_rigid_transform(volumes, transform):
+    # OCCT's general affine operation can turn analytic planes into B-splines.
+    # Use rigid rotate/translate operations to preserve analytic face types.
+    matrix(transform)
+    b = transform["basis"]
+    r = [[b[key][row] for key in ("x", "y", "z")] for row in range(3)]
+    angle = math.acos(max(-1., min(1., (sum(r[i][i] for i in range(3))-1)/2)))
+    if angle > 1e-10:
+        require(abs(angle-math.pi) > 1e-8, "180-degree transforms require an explicit axis")
+        axis = [r[2][1]-r[1][2], r[0][2]-r[2][0], r[1][0]-r[0][1]]
+        length = math.sqrt(sum(x*x for x in axis))
+        gmsh.model.occ.rotate(volumes, 0, 0, 0, *(x/length for x in axis), angle)
+    gmsh.model.occ.translate(volumes, *transform["translationMm"])
+
+
 def controlled_source(case):
     source = case["source"]
     path = (ROOT / source["stepPath"]).resolve()
@@ -168,7 +183,8 @@ def check_geometry(case, expected):
             if abs(b[2]+p["parallelLengthMm"]/2) < 1e-5 and abs(b[5]-p["parallelLengthMm"]/2) < 1e-5:
                 close(b[3]-b[0], p["gaugeDiameterMm"], "gauge diameter", absolute=1e-5)
                 groups["gauge_surface"].append(tag)
-    require(groups["lower"] and groups["upper"], "missing loading/base end faces")
+    require(groups["lower"] and groups["upper"],
+            "missing loading/base end faces; types=" + str([gmsh.model.getType(d, t) for d, t in faces]))
     if case["id"] == "overhang-45":
         require(len(groups["downskin"]) == 1, "expected one genuinely inclined downward face")
     if case["recipe"] == "round-tensile":
@@ -235,7 +251,7 @@ def run(case, output):
     else:
         volumes = gmsh.model.occ.importShapes(str(path), highestDimOnly=True)
         require(len(volumes) == 1 and volumes[0][0] == 3, "STEP import must yield one volume")
-        gmsh.model.occ.affineTransform(volumes, matrix(case["transform"]))
+        apply_rigid_transform(volumes, case["transform"])
         gmsh.model.occ.synchronize()
         expected = case["expected"]
     geometry = check_geometry(case, expected)
