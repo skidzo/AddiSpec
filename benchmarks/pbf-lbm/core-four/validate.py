@@ -199,6 +199,27 @@ def add_groups(regions):
             gmsh.model.addPhysicalGroup(3 if name == "body" else 2, tags, name=name)
 
 
+def integrated_mesh_volume(types, tag_groups):
+    # Integrate the actual curved isoparametric mapping, including midside nodes.
+    # The second-order tetrahedron has a cubic determinant. The second-order
+    # tensor-product hexahedron has degree at most five in each coordinate.
+    rules = {11: "Gauss4", 12: "CompositeGauss6"}
+    volume = 0.
+    used = {}
+    for typ, group in zip(types, tag_groups):
+        typ = int(typ)
+        require(typ in rules, "volume quadrature is defined only for the benchmark element types")
+        local, weights = gmsh.model.mesh.getIntegrationPoints(typ, rules[typ])
+        jacobians, determinants, coordinates = gmsh.model.mesh.getJacobians(typ, local)
+        require(len(determinants) == len(group)*len(weights), "incomplete volume quadrature")
+        require(all(math.isfinite(d) for d in determinants), "nonfinite quadrature Jacobian")
+        volume += math.fsum(float(d)*float(weights[i % len(weights)])
+                            for i, d in enumerate(determinants))
+        used[str(typ)] = rules[typ]
+        del jacobians, determinants, coordinates
+    return volume, used
+
+
 def mesh(case, size, level, output, geometry):
     gmsh.model.mesh.clear()
     gmsh.option.setNumber("Mesh.MeshSizeMin", size)
@@ -228,15 +249,19 @@ def mesh(case, size, level, output, geometry):
     quality = list(gmsh.model.mesh.getElementQualities(tags, "minSICN"))
     require(all(math.isfinite(v) and v > 0 for v in det), "nonpositive or nonfinite Jacobian")
     require(all(math.isfinite(v) and v > 0 for v in quality), "invalid signed element quality")
-    mesh_volume = sum(gmsh.model.mesh.getElementQualities(tags, "volume"))
+    quality_api_volume = sum(gmsh.model.mesh.getElementQualities(tags, "volume"))
+    mesh_volume, integration_rules = integrated_mesh_volume(types, tag_groups)
     volume_error = abs(mesh_volume-geometry["volumeMm3"])/geometry["volumeMm3"]
-    require(volume_error < .01, "mesh volume differs from CAD by >=1 percent")
+    require(volume_error < .01,
+            f"mesh volume differs from CAD by >=1 percent: CAD={geometry[\'volumeMm3\']}, "
+            f"integrated={mesh_volume}, qualityAPI={quality_api_volume}, relative error={volume_error}")
     path = output / f"mesh-{level+1}.msh"
     gmsh.option.setNumber("Mesh.Binary", 1)
     gmsh.write(str(path))
     return {"targetSizeMm": size, "order": 2, "elements": len(tags),
             "elementTypes": [int(t) for t in types], "minimumJacobian": min(det),
             "minimumSignedQuality": min(quality), "meshVolumeMm3": float(mesh_volume),
+            "volumeIntegrationRules": integration_rules, "qualityApiVolumeMm3": float(quality_api_volume),
             "relativeVolumeError": volume_error, "elementsThroughThickness": thickness_elements,
             "artifact": path.name, "sha256": sha(path)}
 
