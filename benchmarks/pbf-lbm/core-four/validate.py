@@ -253,7 +253,7 @@ def mesh(case, size, level, output, geometry):
     mesh_volume, integration_rules = integrated_mesh_volume(types, tag_groups)
     volume_error = abs(mesh_volume-geometry["volumeMm3"])/geometry["volumeMm3"]
     require(volume_error < .01,
-            f"mesh volume differs from CAD by >=1 percent: CAD={geometry[\'volumeMm3\']}, "
+            f"mesh volume differs from CAD by >=1 percent: CAD={geometry['volumeMm3']}, "
             f"integrated={mesh_volume}, qualityAPI={quality_api_volume}, relative error={volume_error}")
     path = output / f"mesh-{level+1}.msh"
     gmsh.option.setNumber("Mesh.Binary", 1)
