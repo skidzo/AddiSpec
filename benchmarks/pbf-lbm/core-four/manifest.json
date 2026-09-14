@@ -1,0 +1,306 @@
+{
+  "schemaVersion": "0.1.0",
+  "id": "ADDISPEC-CORE-FOUR",
+  "units": "mm",
+  "status": "geometry-and-mesh-baseline",
+  "manufacturingQualified": false,
+  "simulationValidated": false,
+  "sourceCommit": "1b4144c8d68f731f01c3976eb6acc7abb3e7cc0c",
+  "frameContract": {
+    "direction": "model-from-source",
+    "equation": "p_model = R * p_source + translationMm",
+    "basisConvention": "columns",
+    "modelAxes": "right-handed; +Z nominal build direction except the finished tensile model, where +Z is the loading axis",
+    "scope": "nominal calculation frames; no measured machine placement"
+  },
+  "cases": [
+    {
+      "id": "density-cube",
+      "title": "Density cube 10 mm",
+      "recipe": "import-step",
+      "source": {
+        "specimenId": "ADDISPEC-PBF-DENSITY-CUBE-10",
+        "specimenPath": "specimens/pbf-lbm/density-cube/ADDISPEC-PBF-DENSITY-CUBE-10/specimen.json",
+        "stepPath": "specimens/pbf-lbm/density-cube/ADDISPEC-PBF-DENSITY-CUBE-10/geometry/ADDISPEC-PBF-DENSITY-CUBE-10.step",
+        "sha256": "c26c59e523b605cd4d447b6208c892023c83742fbf68c380cfdb53ab4d9ebc85",
+        "bytes": 15834
+      },
+      "transform": {
+        "basis": {
+          "x": [
+            1,
+            0,
+            0
+          ],
+          "y": [
+            0,
+            1,
+            0
+          ],
+          "z": [
+            0,
+            0,
+            1
+          ]
+        },
+        "translationMm": [
+          5,
+          5,
+          0
+        ]
+      },
+      "expected": {
+        "boundsMm": [
+          [
+            -5,
+            -5,
+            0
+          ],
+          [
+            5,
+            5,
+            10
+          ]
+        ],
+        "volumeMm3": 1000
+      },
+      "mesh": {
+        "method": "tetrahedral",
+        "sizesMm": [
+          2,
+          1
+        ],
+        "order": 2
+      },
+      "intendedOutputs": [
+        "temperature history at defined regions",
+        "dimensional change",
+        "measured density linked separately; no inferred porosity from a dense solid"
+      ]
+    },
+    {
+      "id": "thin-wall",
+      "title": "Thin wall 40 x 0.5 x 20 mm",
+      "recipe": "import-step",
+      "source": {
+        "specimenId": "ADDISPEC-PBF-THIN-WALL-40X05X20",
+        "specimenPath": "specimens/pbf-lbm/thin-wall/ADDISPEC-PBF-THIN-WALL-40X05X20/specimen.json",
+        "stepPath": "specimens/pbf-lbm/thin-wall/ADDISPEC-PBF-THIN-WALL-40X05X20/geometry/ADDISPEC-PBF-THIN-WALL-40X05X20.step",
+        "sha256": "a8765342bf8fd6e8a27b8b9f8ef5a9a91c68c77fc660fd4e1935d931674e9b62",
+        "bytes": 15864
+      },
+      "transform": {
+        "basis": {
+          "x": [
+            1,
+            0,
+            0
+          ],
+          "y": [
+            0,
+            1,
+            0
+          ],
+          "z": [
+            0,
+            0,
+            1
+          ]
+        },
+        "translationMm": [
+          20,
+          0.25,
+          0
+        ]
+      },
+      "expected": {
+        "boundsMm": [
+          [
+            -20,
+            -0.25,
+            0
+          ],
+          [
+            20,
+            0.25,
+            20
+          ]
+        ],
+        "volumeMm3": 400
+      },
+      "mesh": {
+        "method": "structured-hexahedral",
+        "sizesMm": [
+          1,
+          0.5
+        ],
+        "elementsThroughThickness": [
+          4,
+          8
+        ],
+        "order": 2
+      },
+      "intendedOutputs": [
+        "out-of-plane displacement before and after release",
+        "temperature history",
+        "thickness and surface measurements"
+      ]
+    },
+    {
+      "id": "overhang-45",
+      "title": "Corrected 45 degree downskin ramp",
+      "recipe": "import-step",
+      "source": {
+        "specimenId": "ADDISPEC-PBF-OVERHANG-RAMP-45",
+        "specimenPath": "specimens/pbf-lbm/overhang-ramp/ADDISPEC-PBF-OVERHANG-RAMP-45/specimen.json",
+        "stepPath": "specimens/pbf-lbm/overhang-ramp/ADDISPEC-PBF-OVERHANG-RAMP-45/geometry/ADDISPEC-PBF-OVERHANG-RAMP-45.step",
+        "sha256": "b54cca5433f514a335809fe8b4c91f626adcea30028fa7b9cf1aecd0cb8e6aaa",
+        "bytes": 16269
+      },
+      "transform": {
+        "basis": {
+          "x": [
+            1,
+            0,
+            0
+          ],
+          "y": [
+            0,
+            0,
+            -1
+          ],
+          "z": [
+            0,
+            1,
+            0
+          ]
+        },
+        "translationMm": [
+          0,
+          0,
+          10
+        ]
+      },
+      "expected": {
+        "boundsMm": [
+          [
+            -20,
+            0,
+            0
+          ],
+          [
+            20,
+            10,
+            20
+          ]
+        ],
+        "volumeMm3": 6000,
+        "downskinAngleToBuildPlaneDeg": 45
+      },
+      "mesh": {
+        "method": "tetrahedral",
+        "sizesMm": [
+          2,
+          1
+        ],
+        "order": 2
+      },
+      "intendedOutputs": [
+        "downskin deviation and roughness",
+        "distortion before and after release",
+        "temperature history with explicit powder/support treatment"
+      ]
+    },
+    {
+      "id": "tensile-round-5x25",
+      "title": "Round proportional tensile reference, d0 5 mm and L0 25 mm",
+      "recipe": "round-tensile",
+      "source": {
+        "specimenId": "ADDISPEC-PBF-TENSILE-ROUND-BLANK-12X70",
+        "specimenPath": "specimens/pbf-lbm/tensile-round-blank/ADDISPEC-PBF-TENSILE-ROUND-BLANK-12X70/specimen.json",
+        "stepPath": "specimens/pbf-lbm/tensile-round-blank/ADDISPEC-PBF-TENSILE-ROUND-BLANK-12X70/geometry/ADDISPEC-PBF-TENSILE-ROUND-BLANK-12X70.step",
+        "sha256": "25d0539deef72caa867c7d3ebd92a03b22c2f897c1538d13bb23b0f8a9a0c118",
+        "bytes": 6112
+      },
+      "parameters": {
+        "gaugeDiameterMm": 5,
+        "originalGaugeLengthMm": 25,
+        "parallelLengthMm": 30,
+        "gripDiameterMm": 10,
+        "gripLengthMm": 10,
+        "transitionRadiusMm": 6
+      },
+      "derivation": {
+        "relation": "nominal-machined-from",
+        "finishedToBlankSource": {
+          "basis": {
+            "x": [
+              1,
+              0,
+              0
+            ],
+            "y": [
+              0,
+              1,
+              0
+            ],
+            "z": [
+              0,
+              0,
+              1
+            ]
+          },
+          "translationMm": [
+            0,
+            0,
+            35
+          ]
+        },
+        "status": "proposed machining layout; no physical specimen or machining operation recorded"
+      },
+      "normativeConformance": "not-assessed",
+      "modelIdealization": "Two tangent circular arcs per shoulder; smooth cylindrical grips. This is an authored numerical reference, not a DIN 50125 type-B drawing or threaded manufacturing geometry.",
+      "mesh": {
+        "method": "tetrahedral",
+        "sizesMm": [
+          1.5,
+          0.75
+        ],
+        "order": 2
+      },
+      "intendedOutputs": [
+        "force versus extension over the central 25 mm",
+        "gauge strain uniformity and defined-region stress",
+        "yield and ultimate strength only with a validated material and test model"
+      ],
+      "sourceRefs": [
+        "iso-6892-1-2019",
+        "eos-ms1-2022-5x25"
+      ]
+    }
+  ],
+  "gates": {
+    "geometry": [
+      "source hash and metadata agreement",
+      "one imported/generated solid",
+      "bounds and independently calculated volume",
+      "STEP export and reimport",
+      "correct overhang downskin",
+      "tensile gauge diameter, parallel length and blank containment"
+    ],
+    "mesh": [
+      "nonempty second-order volume mesh at two resolutions",
+      "positive minimum Jacobian",
+      "positive signed quality",
+      "mesh volume agreement within 1 percent",
+      "explicit 4 and 8 elements across thin-wall thickness"
+    ],
+    "pending": [
+      "solver and time-step convergence",
+      "material and process calibration",
+      "support/baseplate and release model",
+      "controlled tensile drawing, tolerances, surface finish and grips",
+      "documented build and measurement evidence"
+    ]
+  }
+}

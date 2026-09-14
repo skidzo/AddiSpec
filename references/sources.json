@@ -74,6 +74,22 @@
       "url": "https://github.com/skidzo/IDTA_submodel_metal_additive_manufacturing/blob/0268784c107a147427591bb63f74d779713eb119/examples/idta-validation/IDTA%2002033-1-0_Template_Machine.aasx",
       "role": "observed Machine template and semantic ID; not a final-release assertion",
       "redistribution": "reference-only"
+    },
+    {
+      "id": "iso-6892-1-2019",
+      "title": "Metallic materials - Tensile testing - Part 1: Method of test at room temperature",
+      "publisher": "ISO",
+      "url": "https://www.iso.org/standard/78322.html",
+      "role": "tensile test-method reference; no specimen conformance asserted",
+      "redistribution": "reference-only"
+    },
+    {
+      "id": "eos-ms1-2022-5x25",
+      "title": "EOS MaragingSteel MS1 M400 Material Data Sheet, June 2022",
+      "publisher": "EOS",
+      "url": "https://uk.eos.info/03_system-related-assets/material-related-contents/metal-materials-and-examples/metal-material-datasheet/werkzeugstahl_ms1_cx/ms1/ms-ms1-m400_material_data_sheet_06-22_en.pdf",
+      "role": "page 4 footnote 8 documents 5 mm neck diameter and 25 mm original gauge length; supports established AM use, not a popularity ranking or full manufacturing drawing",
+      "redistribution": "reference-only"
     }
   ]
 }

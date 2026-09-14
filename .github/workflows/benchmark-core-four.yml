@@ -1,0 +1,38 @@
+name: Core four geometry and meshes
+on:
+  push:
+    paths:
+      - 'benchmarks/pbf-lbm/core-four/**'
+      - 'specimens/pbf-lbm/**'
+      - '.github/workflows/benchmark-core-four.yml'
+  pull_request:
+    paths:
+      - 'benchmarks/pbf-lbm/core-four/**'
+      - 'specimens/pbf-lbm/**'
+      - '.github/workflows/benchmark-core-four.yml'
+permissions:
+  contents: read
+jobs:
+  geometry-and-mesh:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Install mesh runtime
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes libglu1-mesa
+          python3 -m venv /tmp/addispec-mesh-venv
+          /tmp/addispec-mesh-venv/bin/pip install -r benchmarks/pbf-lbm/core-four/requirements.txt
+      - name: Generate and verify four cases
+        run: /tmp/addispec-mesh-venv/bin/python benchmarks/pbf-lbm/core-four/validate.py --output /tmp/addispec-core-four-run
+      - name: Retain geometry and mesh evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: addispec-core-four
+          path: /tmp/addispec-core-four-run
+          if-no-files-found: error
+          retention-days: 30
