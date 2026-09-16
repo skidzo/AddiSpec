@@ -41,6 +41,20 @@ references/                    External source register
 scripts/                       Dependency-free validation tools
 ```
 
+## Initial simulation reference set
+
+The [core-four benchmark](benchmarks/pbf-lbm/core-four/README.md) starts with the
+10 mm density cube, 0.5 mm thin wall, corrected 45-degree overhang and a round
+5 mm diameter / 25 mm gauge-length tensile reference. Its executable gate checks
+STEP import/export, intended geometry and two volume-mesh resolutions. Solver
+convergence and manufacturing validation require additional evidence.
+
+The overhang's intended growth direction is **-Y in its stored STEP frame**. The
+benchmark supplies an explicit transform to +Z build coordinates and exports the
+corrected calculation geometry. The tensile case keeps the printing blank and
+finished numerical specimen distinct; its smooth grip model is not a released
+standard-conforming manufacturing drawing.
+
 ## Spatial lineage
 
 Shape identity and spatial/material identity are deliberately separate. A STEP hash can prove that two files describe the same nominal shape, but it cannot by itself preserve where a specimen was built, how it was cut from a parent artifact, or how its material history is oriented. This is especially important for rotationally symmetric specimens whose CAD geometry does not reveal azimuth relative to scan, recoater, gas-flow, or build coordinates.

@@ -60,5 +60,6 @@
       "measurement result and uncertainty",
       "release decision"
     ]
-  }
+  },
+  "evidence": "evidence.json"
 }
