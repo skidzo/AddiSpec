@@ -147,3 +147,29 @@ preparation system owns the manufacturing instance and placement. AddiBase owns
 measurement evidence and the transferability decision. This benchmark adds no
 second operational source of truth and no fabricated material properties or
 measurements.
+
+## 3MF Core + Production geometry
+
+The 3MF exporter uses the controlled STEP originals and their build-frame
+transforms from the Core-Four manifest. It emits two packages and a report with
+source and output hashes, export versions, tessellation settings, Production
+UUIDs and validated placements.
+
+```sh
+python -m pip install -r benchmarks/pbf-lbm/core-four/requirements-3mf.txt
+python benchmarks/pbf-lbm/core-four/export_3mf.py --output /tmp/addispec-core-four-3mf
+```
+
+- The density-cube package contains one mesh and two independently identified
+  placements. The nominal volume is 1,000 mm³ per item.
+- The overhang keeps the mesh in the specified STEP source frame. Its single
+  build-item transform maps the source growth direction from −Y to +Z and
+  preserves a 45° downskin when the package is read back.
+
+The example placements are synthetic. Each export creates new build, geometry
+and build-item UUIDs. Geometry checks are reproducible across runs and the
+package fingerprints are specific to each export. The existing exact STEP
+artifacts remain the controlled geometry sources. This benchmark verifies
+manifold orientation, units, nominal volume, placements and Production identity.
+Machine-specific build preparation, toolpaths, physical qualification and
+full conformance suite testing are outside the benchmark.
