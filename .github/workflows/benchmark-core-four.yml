@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
         with:
           persist-credentials: false
       - name: Install mesh runtime
@@ -30,7 +30,7 @@ jobs:
         run: /tmp/addispec-mesh-venv/bin/python benchmarks/pbf-lbm/core-four/validate.py --output /tmp/addispec-core-four-run
       - name: Retain geometry and mesh evidence
         if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         with:
           name: addispec-core-four
           path: /tmp/addispec-core-four-run
@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
         with:
           persist-credentials: false
       - name: Install 3MF export runtime
@@ -50,7 +50,7 @@ jobs:
       - name: Export and verify 3MF cases
         run: /tmp/addispec-3mf-venv/bin/python benchmarks/pbf-lbm/core-four/export_3mf.py --output /tmp/addispec-core-four-3mf
       - name: Retain 3MF packages and verification report
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         with:
           name: addispec-core-four-3mf
           path: /tmp/addispec-core-four-3mf
