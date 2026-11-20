@@ -36,3 +36,23 @@ jobs:
           path: /tmp/addispec-core-four-run
           if-no-files-found: error
           retention-days: 30
+  core-production-3mf:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Install 3MF export runtime
+        run: |
+          python3 -m venv /tmp/addispec-3mf-venv
+          /tmp/addispec-3mf-venv/bin/pip install -r benchmarks/pbf-lbm/core-four/requirements-3mf.txt
+      - name: Export and verify 3MF cases
+        run: /tmp/addispec-3mf-venv/bin/python benchmarks/pbf-lbm/core-four/export_3mf.py --output /tmp/addispec-core-four-3mf
+      - name: Retain 3MF packages and verification report
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: addispec-core-four-3mf
+          path: /tmp/addispec-core-four-3mf
+          if-no-files-found: error
+          retention-days: 30
