@@ -22,9 +22,10 @@ The round is along the X edge where Y = 20 and Z equals the wall thickness.
 
 The oracle subtracts the bore and round volumes from the box and restores their
 overlap via quadrature where needed. The volume tolerance is 0.0001 mm³.
-Both kernels must return one valid solid. Two wall-normal measurements check
-the planar thickness and the thickness within the round. A third ray checks
-that the bore remains open at its center. These are local probes, so the
+Both kernels must return one valid solid. Wall-normal measurements check the planar thickness and the thickness
+within the round. A separate ray checks that the bore remains open at its center.
+Where a web exists between the bore and the tangent edge, its midline must
+also retain the full wall thickness. These are local probes, so the
 benchmark does not report a minimum wall thickness map. The nominal gap
 between the bore and the upper tangent edge is 0.0001 mm for the thin-web case.
 
@@ -59,8 +60,9 @@ pinned SolidCore revision used for geometry.
   tolerances and 0.05 mm cylindricity, including their references to the
   intended face. The Rust adapter resolves the same two direct AP242 shape
   aspect links and binds them to the imported face via its original STEP ID.
-  This distinguishes the target from the equal-area second cylinder.
-  This adapter covers the two fixture types and direct face attachments.
+  This distinguishes the target from the equal-area second cylinder. The
+  adapter independently reads the length measures and normalizes them to
+  millimetres. It covers the two fixture types and direct face attachments.
   General native SolidCore PMI decoding and round-trip export remain outside
   the verified path.
 

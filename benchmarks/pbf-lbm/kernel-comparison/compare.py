@@ -150,10 +150,12 @@ def occt(parameters, round_first=False):
         return {"status": "invalid-solid"}
     samples = [transition(body, gp_Pnt(x, y, z)) for x in (5., 10., 35.)
                for y, z in ((20. - fillet_r, t), (20., t - fillet_r))] if fillet_r else []
+    land = 20. - fillet_r - (hole_y + hole_r)
+    web = thickness(body, t, 20., hole_y + hole_r + land / 2.) if land > 0 else None
     return {"status": "solid", "volumeMm3": volume(body),
             "wallMm": thickness(body, t, 10., 5.),
             "nearFilletMm": thickness(body, t, 10., 20. - fillet_r / 2.) if fillet_r else t,
-            "boreMm": thickness(body, t, 20., hole_y), "transitions": samples}
+            "boreMm": thickness(body, t, 20., hole_y), "webProbeMm": web, "transitions": samples}
 
 
 def analytic_volume(t, hole_y, hole_r, fillet_r):
@@ -175,7 +177,7 @@ def analytic_volume(t, hole_y, hole_r, fillet_r):
 
 
 def verify_geometry(result, params, expectation):
-    t, _, _, fillet_r = params
+    t, hole_y, hole_r, fillet_r = params
     if expectation == "rejected":
         require(result["status"] == "error" and result["reason"].startswith("fillet"),
                 f"expected explicit fillet rejection, got {result}")
@@ -185,6 +187,8 @@ def verify_geometry(result, params, expectation):
     close(result["wallMm"], t, "local wall")
     close(result["nearFilletMm"], t - fillet_r * (1. - math.sqrt(0.75)), "wall at round")
     require(result["boreMm"] is None, "the bore centre is not open")
+    if hole_y + hole_r < 20. - fillet_r:
+        close(result["webProbeMm"], t, "wall between bore and tangent edge")
     require(len(result["transitions"]) == (6 if fillet_r else 0), "missing continuity stations")
     for probe in result["transitions"]:
         close(probe["gapMm"], 0., "G0 gap")
@@ -270,6 +274,12 @@ def run_ap242(command, test_file, output):
     require(target["product"] == "PMI target", "PMI is attached to the wrong product")
     for attachment in attachments:
         close(attachment["cylinderRadiusMm"], 2., "PMI target cylinder radius")
+    values = {a["kind"]: a["values"] for a in attachments}
+    dimension = values["DIMENSIONAL_SIZE"]
+    close(dimension["nominalMm"], 4., "SolidCore AP242 diameter")
+    close(dimension["lowerDeviationMm"], -.02, "SolidCore AP242 lower tolerance")
+    close(dimension["upperDeviationMm"], .10, "SolidCore AP242 upper tolerance")
+    close(values["CYLINDRICITY_TOLERANCE"]["valueMm"], .05, "SolidCore AP242 cylindricity")
     return {"nanocctVersion": version("nanocct"), "nanocctTests": "passed",
             "assembly": assembly, "pmi": pmi}
 

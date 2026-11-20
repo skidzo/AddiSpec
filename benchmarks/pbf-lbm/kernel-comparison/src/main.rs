@@ -106,12 +106,19 @@ fn geometry([t, hole_y, hole_r, fillet_r]: [f64; 4], round_first: bool) -> Resul
             }
         }
     }
+    let land = (20.0 - fillet_r) - (hole_y + hole_r);
+    let web = if land > 0.0 {
+        thickness(&k, &mut body, t, 20.0, hole_y + hole_r + land / 2.0)?
+    } else {
+        None
+    };
     Ok(json!({
         "status": "solid",
         "volumeMm3": brep_volume_default(&k, &mut body, 1e-9)?,
         "wallMm": thickness(&k, &mut body, t, 10.0, 5.0)?,
         "nearFilletMm": thickness(&k, &mut body, t, 10.0, if fillet_r > 0.0 {20.0 - fillet_r / 2.0} else {15.0})?,
         "boreMm": thickness(&k, &mut body, t, 20.0, hole_y)?,
+        "webProbeMm": web,
         "transitions": transitions,
     }))
 }
