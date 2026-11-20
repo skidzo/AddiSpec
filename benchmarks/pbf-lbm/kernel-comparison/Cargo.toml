@@ -1,0 +1,18 @@
+[package]
+name = "addispec-kernel-comparison"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+serde_json = "1"
+solidcore = { git = "https://github.com/tangency-labs/solidcore", rev = "45b62d3544cbecaf225e838c5cf1043cfc3a28bf" }
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+solidcore-ops = { git = "https://github.com/tangency-labs/solidcore", rev = "45b62d3544cbecaf225e838c5cf1043cfc3a28bf" }
+solidcore-record = { git = "https://github.com/tangency-labs/solidcore", rev = "45b62d3544cbecaf225e838c5cf1043cfc3a28bf" }
+solidcore-step = { git = "https://github.com/tangency-labs/solidcore", rev = "45b62d3544cbecaf225e838c5cf1043cfc3a28bf" }
+solidcore-convert = { git = "https://github.com/tangency-labs/solidcore", rev = "45b62d3544cbecaf225e838c5cf1043cfc3a28bf" }
+
+[profile.dev]
+debug = 0

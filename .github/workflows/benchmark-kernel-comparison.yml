@@ -1,0 +1,58 @@
+name: Thin-wall kernel and AP242 comparison
+on:
+  pull_request:
+    paths:
+      - 'benchmarks/pbf-lbm/kernel-comparison/**'
+      - 'benchmarks/pbf-lbm/core-four/manifest.json'
+      - 'specimens/pbf-lbm/thin-wall/**'
+      - '.github/workflows/benchmark-kernel-comparison.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  compare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      CARGO_BUILD_JOBS: '1'
+      CARGO_INCREMENTAL: '0'
+      CARGO_PROFILE_DEV_CODEGEN_UNITS: '256'
+    defaults:
+      run:
+        working-directory: benchmarks/pbf-lbm/kernel-comparison
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.1.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Prepare runtimes and AP242 fixture source
+        run: |
+          rustup toolchain install 1.100.0 --profile minimal --target wasm32-wasip1,wasm32-unknown-unknown
+          python3.12 -m venv "$RUNNER_TEMP/addispec-kernel-venv"
+          "$RUNNER_TEMP/addispec-kernel-venv/bin/pip" install -r requirements.txt
+          git init "$RUNNER_TEMP/nanocct-ap242"
+          git -C "$RUNNER_TEMP/nanocct-ap242" fetch --depth 1 https://github.com/skidzo/nanocct.git f5307ac475b440dc3a4940cf0cbed4d6fdc0bfbb
+          git -C "$RUNNER_TEMP/nanocct-ap242" checkout --detach FETCH_HEAD
+      - name: Build native and WASI adapters and check browser target
+        run: |
+          cargo +1.100.0 build --locked
+          cargo +1.100.0 build --locked --target wasm32-wasip1
+          cargo +1.100.0 check --locked --target wasm32-unknown-unknown
+      - name: Compare geometry and AP242
+        run: |
+          "$RUNNER_TEMP/addispec-kernel-venv/bin/python" compare.py \
+            --solidcore target/debug/addispec-kernel-comparison \
+            --wasm run-wasi.mjs target/wasm32-wasip1/debug/addispec-kernel-comparison.wasm \
+            --nanocct-tests "$RUNNER_TEMP/nanocct-ap242/tests/test_ap242_semantics.py" \
+            --output "$RUNNER_TEMP/addispec-kernel-evidence"
+      - name: Retain measurements and generated fixtures
+        if: always()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        with:
+          name: addispec-kernel-comparison
+          path: ${{ runner.temp }}/addispec-kernel-evidence
+          if-no-files-found: error
+          retention-days: 30

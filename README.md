@@ -55,6 +55,11 @@ corrected calculation geometry. The tensile case keeps the printing blank and
 finished numerical specimen distinct; its smooth grip model is not a released
 standard-conforming manufacturing drawing.
 
+The [thin-wall kernel comparison](benchmarks/pbf-lbm/kernel-comparison/README.md)
+derives drilled and rounded cases from the thin-wall reference. It checks OCCT
+and SolidCore against independent geometry expectations and runs a separate AP242
+check for nested assembly placements and semantic PMI face links.
+
 ## Spatial lineage
 
 Shape identity and spatial/material identity are deliberately separate. A STEP hash can prove that two files describe the same nominal shape, but it cannot by itself preserve where a specimen was built, how it was cut from a parent artifact, or how its material history is oriented. This is especially important for rotationally symmetric specimens whose CAD geometry does not reveal azimuth relative to scan, recoater, gas-flow, or build coordinates.
