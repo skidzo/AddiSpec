@@ -15,8 +15,8 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 test('the repository satisfies structural and semantic validation', () => {
   const result = validateLibrary(root);
   assert.deepEqual(result.failures, []);
-  assert.equal(result.counts.specimens, 19);
-  assert.equal(result.counts.catalogEntries, 19);
+  assert.equal(result.counts.specimens, 24);
+  assert.equal(result.counts.catalogEntries, 24);
   assert.equal(result.counts.spatialLineages, 1);
 });
 

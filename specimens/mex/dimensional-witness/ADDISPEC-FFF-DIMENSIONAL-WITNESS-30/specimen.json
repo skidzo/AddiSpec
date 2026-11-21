@@ -1,0 +1,80 @@
+{
+  "$schema": "../../../../schemas/0.3.0/specimen.schema.json",
+  "schemaVersion": "0.3.0",
+  "id": "ADDISPEC-FFF-DIMENSIONAL-WITNESS-30",
+  "title": "Filament extrusion (FFF/FDM) dimensional witness",
+  "entityType": "Specimen",
+  "status": "digital-geometry-verified",
+  "process": {
+    "category": "MEX",
+    "normativeConformance": "not-assessed"
+  },
+  "purpose": [
+    "dimensional deviation",
+    "cross-process feature comparison"
+  ],
+  "design": {
+    "geometryFamily": "dimensional-witness",
+    "units": "mm",
+    "coordinateSystem": "Right-handed design frame; origin at the minimum X/Y/Z corner; Z normal to base.",
+    "nominalDimensions": {
+      "lengthX": 30,
+      "widthY": 15,
+      "heightZ": 5,
+      "baseThickness": 3,
+      "stepLengthX": 10,
+      "holeDiameter": 4,
+      "holeCenterX": 25,
+      "holeCenterY": 7.5
+    },
+    "buildOrientation": {
+      "buildAxis": "+Z",
+      "orientationStatus": "nominal-comparison-reference"
+    },
+    "materialIntent": {
+      "class": "polymer",
+      "family": "thermoplastic",
+      "feedstockForm": "thermoplastic filament",
+      "candidate": "ABS as an example"
+    }
+  },
+  "lifecycle": {
+    "designRevision": 1,
+    "processVariants": [
+      "filament extrusion"
+    ],
+    "nominalGeometryStage": "inspection-target",
+    "measurementStages": [
+      "conditioned-for-inspection"
+    ]
+  },
+  "artifacts": [
+    {
+      "role": "exact-exchange-geometry",
+      "format": "STEP",
+      "path": "geometry/ADDISPEC-FFF-DIMENSIONAL-WITNESS-30.step",
+      "sha256": "8303fd73588825f871536afc5ddd49d753ee28f4c4573e2c44fc7e8f7175a6d6",
+      "bytes": 25754
+    }
+  ],
+  "provenance": {
+    "createdBy": "AddiSpec contributors",
+    "authoringSystem": "CadQuery 2.7.0 / OCCT",
+    "createdAt": "2026-11-21"
+  },
+  "qualification": {
+    "manufacturingQualified": false,
+    "limitations": [
+      "Exploratory coupon with no normative conformance claim.",
+      "Candidate material and orientation describe a comparison starting point. No actual build conditions are recorded."
+    ],
+    "missingEvidence": [
+      "Build and specimen identity, machine and placement",
+      "toolpath or vendor job, raster direction, bead width, layer height and infill",
+      "filament lot and conditioning",
+      "support removal and any finishing",
+      "Inspection protocol, results, uncertainty and any acceptance criteria"
+    ]
+  },
+  "evidence": "evidence.json"
+}

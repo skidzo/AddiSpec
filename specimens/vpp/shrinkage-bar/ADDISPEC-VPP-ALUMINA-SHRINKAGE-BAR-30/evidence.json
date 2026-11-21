@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "0.2.0",
+  "specimenId": "ADDISPEC-VPP-ALUMINA-SHRINKAGE-BAR-30",
+  "exactGeometry": {
+    "valid": true,
+    "solids": 1,
+    "faces": 6,
+    "edges": 12,
+    "boundingBox": [
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        30.0,
+        8.0,
+        4.0
+      ]
+    ],
+    "volumeMm3": 960.0
+  },
+  "artifact": {
+    "path": "geometry/ADDISPEC-VPP-ALUMINA-SHRINKAGE-BAR-30.step",
+    "bytes": 15351,
+    "sha256": "eeac060fb0ad4d5948c484723fa183ab671f2efa1d6854cf5c0d0491b41044d9"
+  },
+  "verificationScope": "STEP re-import; solid validity, bounding box, volume and overlap with original parametric design",
+  "license": "MIT"
+}

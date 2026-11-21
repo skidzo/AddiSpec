@@ -4,17 +4,19 @@
 
 AddiSpec is a vendor-neutral library for versioned additive-manufacturing test specimens. Each entry connects design intent, parametric dimensions, exact exchange geometry, integrity hashes, manufacturing context, and qualification evidence without claiming certification that has not been demonstrated. Spatial-lineage records can additionally connect a printed build artifact to extracted specimens, prepared sections, measurement regions, and fracture surfaces.
 
-The project starts with PBF-LB/M and is designed to connect later to Asset Administration Shell (AAS), IDTA submodels, build-job records, material batches, inspection results, and uncertainty statements.
+The project covers metal PBF-LB/M and includes initial polymer and ceramic templates. Specimen records are designed to connect to Asset Administration Shell (AAS) submodels, build-job records, material batches, inspection results, and uncertainty statements.
 
 ## Why this repository exists
 
 Useful AM test artefacts already exist, including the [NIST AM test artifact](https://www.nist.gov/el/intelligent-systems-division-73500/production-systems-group/nist-additive-manufacturing-test), [NIST AM-Bench](https://www.nist.gov/ambench), and the benchmarking framework described by [ISO/ASTM 52902:2023](https://www.iso.org/standard/79683.html). Position and orientation are addressed by [ISO 17295:2023](https://www.iso.org/standard/76471.html), while [ISO/ASTM 52909:2024](https://www.iso.org/standard/87956.html) specifically addresses orientation and location dependence for mechanical-property specimens. These sources do not form a single open Git repository for reusable parametric definitions plus semantic, revision, and evidence metadata. AddiSpec aims to fill that engineering-integration gap, not replace standards or authoritative datasets.
 
-## Current PBF-LB/M catalogue
+## Specimen catalogue
 
-The catalogue contains 18 reusable specimen templates plus the original NuCOS density-coupon experimental record, indexed explicitly as 19 distinct entries. It covers density and porosity, metallography, hardness, chemistry and thermal-analysis stock, tensile/compression/fatigue/impact blanks, surface and thin-wall capability, overhangs, dimensional steps, supports, CT, and powder-lot witnesses.
+The catalogue contains 23 reusable templates and the original NuCOS density-coupon experimental record. The 19 PBF-LB/M entries cover density and porosity, metallography, hardness, chemistry and thermal-analysis stock, tensile/compression/fatigue/impact blanks, surface and thin-wall capability, overhangs, dimensional steps, supports, CT, and powder-lot witnesses.
 
-See [`catalog.json`](catalog.json) for the machine-readable index.
+The [polymer and ceramic starter set](docs/polymer-ceramic-specimens.md) uses one nominal dimensional witness for FFF/FDM, polymer powder bed fusion, vat photopolymerization and material jetting. A separate alumina bar supports axis-by-axis shrinkage measurements through ceramic vat photopolymerization and thermal processing.
+
+See [`catalog.json`](catalog.json) for the machine-readable index, including the process for each entry.
 
 The original NuCOS density-coupon record includes:
 
@@ -25,7 +27,7 @@ The original NuCOS density-coupon record includes:
 - two revision-bound agent commits (8 mm to 10 mm height);
 - a preliminary AddiBase/AAS mapping.
 
-All 19 entries carry exact STEP geometry and SHA-256 evidence. This verifies the digital geometry workflow only. They are **not yet norm-conforming or manufacturing-qualified specimen definitions**.
+All 24 entries carry exact STEP geometry and SHA-256 evidence. Physical validation and qualification require build and inspection evidence.
 
 ## Repository model
 
@@ -75,7 +77,7 @@ A spatial-lineage record therefore provides:
 
 See the [synthetic retained-specimen mapping](studies/pbf-lbm/synthetic-retained/README.md). Coarse categories are valid without geometry or coordinate frames. The Xu literature case is handled separately in the [AM Data Model Atlas](https://github.com/skidzo/AM-Data-Model-Atlas).
 
-The [approved ADR](docs/adr/0001-spatial-reference-contract.md) defines system ownership. See the [spatial contract](docs/spatial-contract.md), [external-reference contract](docs/external-references.md) and [breaking-change migration](docs/migration.md). Catalog and specimen contracts are 0.3.0; spatial lineage and sources are 0.2.0.
+The [approved ADR](docs/adr/0001-spatial-reference-contract.md) defines system ownership. See the [spatial contract](docs/spatial-contract.md), [external-reference contract](docs/external-references.md) and [breaking-change migration](docs/migration.md). The catalogue contract is 0.4.0, the specimen contract is 0.3.0 and spatial lineage and sources are 0.2.0.
 
 ## Validation
 

@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "0.2.0",
+  "specimenId": "ADDISPEC-MJT-DIMENSIONAL-WITNESS-30",
+  "exactGeometry": {
+    "valid": true,
+    "solids": 1,
+    "faces": 9,
+    "edges": 21,
+    "boundingBox": [
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        30.0,
+        15.0,
+        5.0
+      ]
+    ],
+    "volumeMm3": 1612.3008881569124
+  },
+  "artifact": {
+    "path": "geometry/ADDISPEC-MJT-DIMENSIONAL-WITNESS-30.step",
+    "bytes": 25754,
+    "sha256": "edfd5cd3b7c701c17d8ec13daa0ee955c7ce1f3df89a652051b4dd259b8a9092"
+  },
+  "verificationScope": "STEP re-import; solid validity, bounding box, volume and overlap with original parametric design",
+  "license": "MIT"
+}

@@ -1,0 +1,77 @@
+{
+  "$schema": "../../../../schemas/0.3.0/specimen.schema.json",
+  "schemaVersion": "0.3.0",
+  "id": "ADDISPEC-VPP-ALUMINA-SHRINKAGE-BAR-30",
+  "title": "Alumina VPP shrinkage bar",
+  "entityType": "Specimen",
+  "status": "digital-geometry-verified",
+  "process": {
+    "category": "VPP",
+    "normativeConformance": "not-assessed"
+  },
+  "purpose": [
+    "directional shrinkage",
+    "sintered dimensional deviation"
+  ],
+  "design": {
+    "geometryFamily": "shrinkage-bar",
+    "units": "mm",
+    "coordinateSystem": "Right-handed design frame; origin at the minimum X/Y/Z corner; Z normal to base.",
+    "nominalDimensions": {
+      "lengthX": 30,
+      "widthY": 8,
+      "heightZ": 4
+    },
+    "buildOrientation": {
+      "buildAxis": "+Z",
+      "orientationStatus": "nominal-comparison-reference"
+    },
+    "materialIntent": {
+      "class": "ceramic",
+      "family": "oxide ceramic",
+      "feedstockForm": "photocurable alumina suspension",
+      "candidate": "alumina (Al2O3)"
+    }
+  },
+  "lifecycle": {
+    "designRevision": 1,
+    "processVariants": [
+      "ceramic vat photopolymerization"
+    ],
+    "nominalGeometryStage": "sintered-target",
+    "measurementStages": [
+      "green",
+      "debound",
+      "sintered"
+    ]
+  },
+  "artifacts": [
+    {
+      "role": "exact-exchange-geometry",
+      "format": "STEP",
+      "path": "geometry/ADDISPEC-VPP-ALUMINA-SHRINKAGE-BAR-30.step",
+      "sha256": "eeac060fb0ad4d5948c484723fa183ab671f2efa1d6854cf5c0d0491b41044d9",
+      "bytes": 15351
+    }
+  ],
+  "provenance": {
+    "createdBy": "AddiSpec contributors",
+    "authoringSystem": "CadQuery 2.7.0 / OCCT",
+    "createdAt": "2026-11-21"
+  },
+  "qualification": {
+    "manufacturingQualified": false,
+    "limitations": [
+      "Exploratory coupon with no normative conformance claim.",
+      "STEP represents the final sintered target; no green geometry or compensation factor is supplied."
+    ],
+    "missingEvidence": [
+      "Build and specimen identity, machine and placement",
+      "feedstock lot, exposure job, build orientation and support history",
+      "measured green and sintered dimensions by axis and debound dimensions if measured",
+      "debinding and sintering records, including the fixture condition and the compensation applied",
+      "Inspection protocol, results, uncertainty and any acceptance criteria"
+    ]
+  },
+  "evidence": "evidence.json"
+}

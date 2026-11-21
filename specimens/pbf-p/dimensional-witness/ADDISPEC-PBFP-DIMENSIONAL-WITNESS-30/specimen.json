@@ -1,0 +1,81 @@
+{
+  "$schema": "../../../../schemas/0.3.0/specimen.schema.json",
+  "schemaVersion": "0.3.0",
+  "id": "ADDISPEC-PBFP-DIMENSIONAL-WITNESS-30",
+  "title": "Polymer powder bed fusion (SLS/SAF) dimensional witness",
+  "entityType": "Specimen",
+  "status": "digital-geometry-verified",
+  "process": {
+    "category": "PBF-P",
+    "normativeConformance": "not-assessed"
+  },
+  "purpose": [
+    "dimensional deviation",
+    "cross-process feature comparison"
+  ],
+  "design": {
+    "geometryFamily": "dimensional-witness",
+    "units": "mm",
+    "coordinateSystem": "Right-handed design frame; origin at the minimum X/Y/Z corner; Z normal to base.",
+    "nominalDimensions": {
+      "lengthX": 30,
+      "widthY": 15,
+      "heightZ": 5,
+      "baseThickness": 3,
+      "stepLengthX": 10,
+      "holeDiameter": 4,
+      "holeCenterX": 25,
+      "holeCenterY": 7.5
+    },
+    "buildOrientation": {
+      "buildAxis": "+Z",
+      "orientationStatus": "nominal-comparison-reference"
+    },
+    "materialIntent": {
+      "class": "polymer",
+      "family": "thermoplastic",
+      "feedstockForm": "polymer powder",
+      "candidate": "PA12 as an example, subject to machine availability"
+    }
+  },
+  "lifecycle": {
+    "designRevision": 1,
+    "processVariants": [
+      "SLS",
+      "SAF"
+    ],
+    "nominalGeometryStage": "inspection-target",
+    "measurementStages": [
+      "conditioned-for-inspection"
+    ]
+  },
+  "artifacts": [
+    {
+      "role": "exact-exchange-geometry",
+      "format": "STEP",
+      "path": "geometry/ADDISPEC-PBFP-DIMENSIONAL-WITNESS-30.step",
+      "sha256": "e5648e1593fe3e6d96caaf150127b8a2fda1d239290b14da75e7ce7a9160e274",
+      "bytes": 25754
+    }
+  ],
+  "provenance": {
+    "createdBy": "AddiSpec contributors",
+    "authoringSystem": "CadQuery 2.7.0 / OCCT",
+    "createdAt": "2026-11-21"
+  },
+  "qualification": {
+    "manufacturingQualified": false,
+    "limitations": [
+      "Exploratory coupon with no normative conformance claim.",
+      "Candidate material and orientation describe a comparison starting point. No actual build conditions are recorded."
+    ],
+    "missingEvidence": [
+      "Build and specimen identity, machine and placement",
+      "technology variant, packing position and layer height",
+      "powder lot, reuse or refresh history and cooldown",
+      "depowdering and any finishing",
+      "Inspection protocol, results, uncertainty and any acceptance criteria"
+    ]
+  },
+  "evidence": "evidence.json"
+}
