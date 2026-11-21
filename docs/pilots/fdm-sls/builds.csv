@@ -1,0 +1,3 @@
+pilot_build_key,route,specimen_template_id,requested_material,supplier_build_id,build_date,machine,actual_grade,material_lot,layer_height_mm,recipe_revision,fdm_raster_infill,sls_powder_refresh,compensation,cleanup,step_sha256,planned_job_ref,execution_evidence_ref,notes
+FDM-A,FDM,ADDISPEC-FFF-DIMENSIONAL-WITNESS-30,ABS-M30,,,,,,,,,,,,,,,
+SLS-A,SLS,ADDISPEC-PBFP-DIMENSIONAL-WITNESS-30,Unfilled PA12,,,,,,,,,,,,,,,

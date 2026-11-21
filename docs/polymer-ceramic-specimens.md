@@ -34,6 +34,9 @@ where applicable. See [Alves et al. on alumina debinding and sintering](https://
 
 ## Comparing physical builds
 
+The [FDM and SLS pilot](pilots/fdm-sls/README.md) provides the STEP files,
+inspection instructions and results sheets for a six-coupon comparison.
+
 Start with a repeat of the polymer witness in one process, then run the same
 inspection on a second process. Keep build and specimen IDs, geometry revision,
 material lot, orientation, post-processing state, method and uncertainty with
