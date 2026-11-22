@@ -2,7 +2,8 @@
 
 | Dokument | Historischer Stand | Neuer Vertrag |
 | --- | --- | --- |
-| catalog.json | 0.2.0, 18 indexierte Templates | 0.3.0, entryKind, getrennte Zähler; Repository ergänzt den vorhandenen experimentellen Record als 19. Eintrag |
+| catalog.json | 0.2.0, 18 indexierte Templates | 0.3.0 führte entryKind und getrennte Zähler ein und ergänzte den vorhandenen experimentellen Record |
+| catalog.json | 0.3.0, ein globaler process | 0.4.0, process je Eintrag; identisch mit specimen.process.category |
 | specimen.json | 0.1.0 und 0.2.0, breites altes Schema | 0.3.0, strikt; $schema, title, design.coordinateSystem erforderlich |
 | sources.json | 0.1.0 auf main | 0.2.0, explizites Schema |
 | spatial-lineage.json | unveröffentlichter PR-Entwurf 0.1.0 | 0.2.0; Referenzvertrag und präzisierte räumliche Semantik |
@@ -33,6 +34,8 @@ Katalog-Metadaten:
 ```
 
 Jeder vorhandene Eintrag benötigt eine geprüfte Klassifikation. Die generische Migration erhält genau die alten Einträge; sie erfindet keinen fehlenden experimentellen Record. Der bestehende Repository-Katalog wurde explizit um den bereits vorhandenen Record ergänzt. Dieser Unterschied wird in Tests abgesichert.
+
+Das Skript übernimmt bei Katalog 0.3.0 die vorhandenen Klassifikationen. Für den CLI-Aufruf genügt hier eine Metadatendatei mit `{}`. Bei 0.2.0 und 0.3.0 verschiebt die Migration den globalen Prozesswert in jeden Eintrag. Consumer von 0.4.0 lesen `specimens[].process`. Das Specimen-Schema bleibt auf 0.3.0.
 
 Die 19 vorhandenen Specimen-Dokumente enthalten bereits Titel und Koordinatensystembeschreibung. Historisch tragen 18 Templates bereits 0.2.0 und der experimentelle Record 0.1.0, beide unter dem alten breiten Schema. Deshalb ist der neue strikte Specimen-Vertrag 0.3.0. Bei ihnen ändern sich nur schemaVersion und $schema; Geometrie, Hashes und fachliche Werte bleiben erhalten. Quellenmigration: neuen registrierten $schema-Pfad und 0.2.0 setzen, Felder gegen das Schema prüfen. Für alte Spatial-Lineage-Entwürfe ist eine fachliche Migration nötig: reportedContext in Referenzen/Snapshots überführen, Frame-Konvention, Richtung, Evidenz und Unsicherheit prüfen. Keine automatische Deutung alter numerischer Transformationen.
 

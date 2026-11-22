@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { validateAgainstSchema, validateSupportedSchema } from './validation.mjs';
 
-export const versions = Object.freeze({ specimen: '0.3.0', catalog: '0.3.0', sources: '0.2.0', 'spatial-lineage': '0.2.0' });
+export const versions = Object.freeze({ specimen: '0.3.0', catalog: '0.4.0', sources: '0.2.0', 'spatial-lineage': '0.2.0' });
 
 export function schemaFor(root, kind) {
   if (!Object.hasOwn(versions, kind)) throw new Error('Unknown document kind: ' + kind);

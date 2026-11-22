@@ -1,0 +1,81 @@
+{
+  "$schema": "../../../../schemas/0.3.0/specimen.schema.json",
+  "schemaVersion": "0.3.0",
+  "id": "ADDISPEC-VPP-DIMENSIONAL-WITNESS-30",
+  "title": "Polymer vat photopolymerization (SLA/DLP) dimensional witness",
+  "entityType": "Specimen",
+  "status": "digital-geometry-verified",
+  "process": {
+    "category": "VPP",
+    "normativeConformance": "not-assessed"
+  },
+  "purpose": [
+    "dimensional deviation",
+    "cross-process feature comparison"
+  ],
+  "design": {
+    "geometryFamily": "dimensional-witness",
+    "units": "mm",
+    "coordinateSystem": "Right-handed design frame; origin at the minimum X/Y/Z corner; Z normal to base.",
+    "nominalDimensions": {
+      "lengthX": 30,
+      "widthY": 15,
+      "heightZ": 5,
+      "baseThickness": 3,
+      "stepLengthX": 10,
+      "holeDiameter": 4,
+      "holeCenterX": 25,
+      "holeCenterY": 7.5
+    },
+    "buildOrientation": {
+      "buildAxis": "+Z",
+      "orientationStatus": "nominal-comparison-reference"
+    },
+    "materialIntent": {
+      "class": "polymer",
+      "family": "photopolymer",
+      "feedstockForm": "liquid photopolymer resin",
+      "candidate": "rigid engineering resin as an example"
+    }
+  },
+  "lifecycle": {
+    "designRevision": 1,
+    "processVariants": [
+      "SLA",
+      "DLP"
+    ],
+    "nominalGeometryStage": "inspection-target",
+    "measurementStages": [
+      "conditioned-for-inspection"
+    ]
+  },
+  "artifacts": [
+    {
+      "role": "exact-exchange-geometry",
+      "format": "STEP",
+      "path": "geometry/ADDISPEC-VPP-DIMENSIONAL-WITNESS-30.step",
+      "sha256": "9e15c7b258a1a443e0a8b224b84a067b82ae4d7b998e79664a5c1b6add97e775",
+      "bytes": 25754
+    }
+  ],
+  "provenance": {
+    "createdBy": "AddiSpec contributors",
+    "authoringSystem": "CadQuery 2.7.0 / OCCT",
+    "createdAt": "2026-11-21"
+  },
+  "qualification": {
+    "manufacturingQualified": false,
+    "limitations": [
+      "Exploratory coupon with no normative conformance claim.",
+      "Candidate material and orientation describe a comparison starting point. No actual build conditions are recorded."
+    ],
+    "missingEvidence": [
+      "Build and specimen identity, machine and placement",
+      "technology variant, exposure job, layer height and supports",
+      "resin lot, wash and post-cure records",
+      "inspection condition and time after cure",
+      "Inspection protocol, results, uncertainty and any acceptance criteria"
+    ]
+  },
+  "evidence": "evidence.json"
+}

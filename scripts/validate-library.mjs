@@ -150,6 +150,9 @@ export function validateLibrary(root = defaultRoot) {
     }
     const entry = catalogById.get(id);
     const specimen = stored.specimen;
+    if (entry.process !== specimen.process.category) {
+      failures.push(`${label(catalogPath)}: ${id} process does not match specimen.json`);
+    }
     if (entry.family !== specimen.design?.geometryFamily) {
       failures.push(`${label(catalogPath)}: ${id} family does not match specimen.json`);
     }

@@ -145,9 +145,29 @@ test('catalog 0.2.0 migration needs explicit classifications and preserves all o
   assert.throws(() => migrateDocument('catalog', old), /entryKind/);
   const entryKinds = Object.fromEntries(old.specimens.map(x => [x.id, 'template']));
   const next = migrateDocument('catalog', old, { entryKinds });
-  assert.equal(next.schemaVersion, '0.3.0'); assert.equal(next.templateCount, 18);
+  assert.equal(next.schemaVersion, '0.4.0'); assert.equal(next.templateCount, 18);
   assert.equal(next.experimentalRecordCount, 0); assert.deepEqual(old, before);
-  assert.deepEqual(next.specimens.map(({ entryKind, ...x }) => x), old.specimens);
+  assert.deepEqual(next.specimens.map(({ entryKind, process, ...x }) => x), old.specimens);
+  assert.ok(next.specimens.every(entry => entry.process === old.process));
+  assert.equal(next.process, undefined);
+});
+test('catalog 0.3.0 migration preserves entry kinds and inherits the catalogue process', () => {
+  const legacyEntries = currentCatalog().specimens
+    .filter(entry => entry.process === 'PBF-LB/M')
+    .map(({ process, ...entry }) => entry);
+  const old = {
+    $schema: 'schemas/0.3.0/catalog.schema.json',
+    schemaVersion: '0.3.0',
+    process: 'PBF-LB/M',
+    specimenCount: 19,
+    templateCount: 18,
+    experimentalRecordCount: 1,
+    specimens: legacyEntries
+  };
+  const next = migrateDocument('catalog', old);
+  assert.deepEqual(next.specimens, legacyEntries.map(entry => ({ ...entry, process: old.process })));
+  assert.equal(next.experimentalRecordCount, 1);
+  assert.equal(next.process, undefined);
 });
 test('consumer rejects missing entryKind, unknown kind and old/unknown versions', () => {
   const schema = schemaFor(root, 'catalog');
@@ -160,7 +180,7 @@ test('consumer rejects missing entryKind, unknown kind and old/unknown versions'
   const c = currentCatalog(); c.schemaVersion = '99.0.0'; assert.notEqual(validateAgainstSchema(c, schema).length, 0);
 });
 test('experimental-record is distinct and counted separately from templates', () => {
-  const c = currentCatalog(); assert.equal(c.experimentalRecordCount, 1); assert.equal(c.templateCount, 18);
+  const c = currentCatalog(); assert.equal(c.experimentalRecordCount, 1); assert.equal(c.templateCount, 23);
   assert.equal(c.specimens.filter(x => x.entryKind === 'experimental-record').length, 1);
   assert.deepEqual(validateAgainstSchema(c, schemaFor(root, 'catalog')), []);
 });
@@ -219,4 +239,14 @@ test('library reports malformed structures without crashing', t => {
   cpSync(root, dir, { recursive: true, filter: p => !p.includes('/.git') });
   writeFileSync(join(dir, 'catalog.json'), JSON.stringify({ ...currentCatalog(), specimens: [null] }));
   assert.match(validateLibrary(dir).failures.join(), /expected object/);
+});
+test('library rejects a catalogue process that disagrees with its specimen', t => {
+  const dir = mkdtempSync(join(tmpdir(), 'addispec-process-'));
+  t.after(() => rmSync(dir, { recursive: true, force: true }));
+  cpSync(root, dir, { recursive: true, filter: path => !path.includes('/.git') });
+  const catalogue = currentCatalog();
+  const entry = catalogue.specimens.find(item => item.id === 'ADDISPEC-FFF-DIMENSIONAL-WITNESS-30');
+  entry.process = 'VPP';
+  writeFileSync(join(dir, 'catalog.json'), JSON.stringify(catalogue));
+  assert.match(validateLibrary(dir).failures.join(), /ADDISPEC-FFF-DIMENSIONAL-WITNESS-30 process does not match/);
 });

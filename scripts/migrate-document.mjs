@@ -21,13 +21,28 @@ export function migrateDocument(kind, input, metadata = {}, schemaReference) {
       output.design.coordinateSystem = metadata.coordinateSystem;
     }
   } else if (kind === 'catalog') {
-    if (input.schemaVersion !== '0.2.0' || !Array.isArray(input.specimens)) throw new Error('Expected catalog 0.2.0 with specimens');
+    if (!['0.2.0', '0.3.0'].includes(input.schemaVersion) || !Array.isArray(input.specimens)) {
+      throw new Error('Expected catalog 0.2.0 or 0.3.0 with specimens');
+    }
+    if (input.schemaVersion === '0.3.0') {
+      const legacy = JSON.parse(readFileSync(resolve(root, 'schemas/0.3.0/catalog.schema.json')));
+      const errors = validateAgainstSchema(input, legacy);
+      if (errors.length) throw new Error('Invalid catalog 0.3.0: ' + errors.join('; '));
+    }
+    if (typeof input.process !== 'string' || !input.process.trim()) {
+      throw new Error('Missing legacy catalogue process; supply a reviewed source document');
+    }
     output.specimens = input.specimens.map(entry => {
-      if (!['template', 'experimental-record'].includes(metadata.entryKinds?.[entry.id])) {
+      const entryKind = input.schemaVersion === '0.3.0' ? entry.entryKind : metadata.entryKinds?.[entry.id];
+      if (!['template', 'experimental-record'].includes(entryKind)) {
         throw new Error('Missing reviewed entryKind for ' + entry.id);
       }
-      return { ...entry, entryKind: metadata.entryKinds[entry.id] };
+      if (Object.hasOwn(entry, 'process') && entry.process !== input.process) {
+        throw new Error('Conflicting legacy process for ' + entry.id);
+      }
+      return { ...entry, entryKind, process: input.process };
     });
+    delete output.process;
     output.specimenCount = output.specimens.length;
     output.templateCount = output.specimens.filter(x => x.entryKind === 'template').length;
     output.experimentalRecordCount = output.specimens.filter(x => x.entryKind === 'experimental-record').length;

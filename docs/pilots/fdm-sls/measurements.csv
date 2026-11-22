@@ -1,0 +1,7 @@
+coupon_id,pilot_build_key,build_position,build_orientation,inspection_date,operator,conditioning_h,temperature_c,relative_humidity_pct,linear_gauge_id,linear_gauge_resolution_mm,linear_uncertainty_mm,pin_set_id,pin_uncertainty_mm,length_x_mm,width_y_mm,base_thickness_mm,overall_height_mm,largest_passing_pin_mm,next_failing_pin_mm,pin_direction,measurement_evidence_ref,notes
+FDM-01,FDM-A,,,,,,,,,,,,,,,,,,,,,
+FDM-02,FDM-A,,,,,,,,,,,,,,,,,,,,,
+FDM-03,FDM-A,,,,,,,,,,,,,,,,,,,,,
+SLS-01,SLS-A,,,,,,,,,,,,,,,,,,,,,
+SLS-02,SLS-A,,,,,,,,,,,,,,,,,,,,,
+SLS-03,SLS-A,,,,,,,,,,,,,,,,,,,,,

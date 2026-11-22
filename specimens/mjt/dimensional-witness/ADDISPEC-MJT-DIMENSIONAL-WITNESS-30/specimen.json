@@ -1,0 +1,80 @@
+{
+  "$schema": "../../../../schemas/0.3.0/specimen.schema.json",
+  "schemaVersion": "0.3.0",
+  "id": "ADDISPEC-MJT-DIMENSIONAL-WITNESS-30",
+  "title": "Polymer material jetting (e.g. PolyJet) dimensional witness",
+  "entityType": "Specimen",
+  "status": "digital-geometry-verified",
+  "process": {
+    "category": "MJT",
+    "normativeConformance": "not-assessed"
+  },
+  "purpose": [
+    "dimensional deviation",
+    "cross-process feature comparison"
+  ],
+  "design": {
+    "geometryFamily": "dimensional-witness",
+    "units": "mm",
+    "coordinateSystem": "Right-handed design frame; origin at the minimum X/Y/Z corner; Z normal to base.",
+    "nominalDimensions": {
+      "lengthX": 30,
+      "widthY": 15,
+      "heightZ": 5,
+      "baseThickness": 3,
+      "stepLengthX": 10,
+      "holeDiameter": 4,
+      "holeCenterX": 25,
+      "holeCenterY": 7.5
+    },
+    "buildOrientation": {
+      "buildAxis": "+Z",
+      "orientationStatus": "nominal-comparison-reference"
+    },
+    "materialIntent": {
+      "class": "polymer",
+      "family": "photopolymer",
+      "feedstockForm": "jettable photopolymer",
+      "candidate": "rigid photopolymer as an example"
+    }
+  },
+  "lifecycle": {
+    "designRevision": 1,
+    "processVariants": [
+      "photopolymer material jetting"
+    ],
+    "nominalGeometryStage": "inspection-target",
+    "measurementStages": [
+      "conditioned-for-inspection"
+    ]
+  },
+  "artifacts": [
+    {
+      "role": "exact-exchange-geometry",
+      "format": "STEP",
+      "path": "geometry/ADDISPEC-MJT-DIMENSIONAL-WITNESS-30.step",
+      "sha256": "edfd5cd3b7c701c17d8ec13daa0ee955c7ce1f3df89a652051b4dd259b8a9092",
+      "bytes": 25754
+    }
+  ],
+  "provenance": {
+    "createdBy": "AddiSpec contributors",
+    "authoringSystem": "CadQuery 2.7.0 / OCCT",
+    "createdAt": "2026-11-21"
+  },
+  "qualification": {
+    "manufacturingQualified": false,
+    "limitations": [
+      "Exploratory coupon with no normative conformance claim.",
+      "Candidate material and orientation describe a comparison starting point. No actual build conditions are recorded."
+    ],
+    "missingEvidence": [
+      "Build and specimen identity, machine and placement",
+      "print mode, head direction and layer height",
+      "model and support material lots and support removal",
+      "inspection condition and time after printing",
+      "Inspection protocol, results, uncertainty and any acceptance criteria"
+    ]
+  },
+  "evidence": "evidence.json"
+}
