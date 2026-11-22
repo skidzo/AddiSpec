@@ -32,6 +32,9 @@ specimen record.
 - Use a separate labelled bag for each coupon to preserve identity without
   putting a mark on the measurement surfaces.
 
+Use the [AM machine register](../../../machines/README.md) to check available
+local job transfer and export before agreeing the pilot data exchange.
+
 Enter the build metadata in [builds.csv](builds.csv). Link coupons using
 `pilot_build_key`. Use `not-reported` for unavailable metadata and leave
 unmeasured numeric values blank with a reason in `notes`.

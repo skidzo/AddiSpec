@@ -29,6 +29,10 @@ The original NuCOS density-coupon record includes:
 
 All 24 entries carry exact STEP geometry and SHA-256 evidence. Physical validation and qualification require build and inspection evidence.
 
+## Machine data workflows
+
+The [AM machine register](machines/README.md) links FDM, SLS and PBF-LB/M machines to public evidence for local job transfer or data access and lists the checks needed on an installed machine.
+
 ## Repository model
 
 ```text
