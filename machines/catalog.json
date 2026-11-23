@@ -1,0 +1,120 @@
+{
+  "reviewDate": "2026-11-22",
+  "machines": [
+    {
+      "id": "stratasys-f770",
+      "manufacturer": "Stratasys",
+      "model": "F770",
+      "process": "MEX",
+      "variant": "FDM",
+      "publicEvidenceStatus": "vendor-documented-workflow",
+      "documentedPath": "F770 uses GrabCAD Print. GrabCAD Print documents local submission and job-history export in Offline Mode.",
+      "verifyOnSite": [
+        "Check exact GrabCAD Print edition and licence, initial activation, installed firmware and local operation after restart without Internet.",
+        "Confirm job-history fields, local export and the method for approved offline updates.",
+        "PartsToGo lists F770 and ABS-M30 together. Confirm the scheduled machine and material for the actual pilot."
+      ],
+      "sources": [
+        {
+          "title": "Stratasys F770 setup and software onboarding",
+          "url": "https://support.stratasys.com/en/Printer-Setup/F770-Setup"
+        },
+        {
+          "title": "Stratasys GrabCAD Print offline operation and job export",
+          "url": "https://support.stratasys.com.cn/en/Software/GrabCAD-Print/Tips-Guides-and-FAQs/Offline-printing-and-exporting-jobs"
+        },
+        {
+          "title": "PartsToGo F770 and ABS-M30 application listing",
+          "url": "https://parts-to-go.com/en/applications/large-format"
+        }
+      ]
+    },
+    {
+      "id": "prusa-core-one-l-plus-indx-4-tool",
+      "manufacturer": "Prusa Research",
+      "model": "CORE One L+ INDX 4-Tool",
+      "process": "MEX",
+      "variant": "FFF",
+      "publicEvidenceStatus": "vendor-documented-workflow",
+      "documentedPath": "Prusa documents offline setup, slicing, USB printing and offline firmware installation. Local network printing is also documented but is outside the proposed USB workflow.",
+      "verifyOnSite": [
+        "Confirm the site-approved slicer, firmware and removable-media handling.",
+        "Confirm which execution data and job identifiers can be captured. Preserve the prepared print file separately from observed execution.",
+        "Confirm material compatibility for the use case. This is an offline FFF reference, with no assumed equivalence to the F770 and ABS-M30 route."
+      ],
+      "sources": [
+        {
+          "title": "Prusa CORE One L+ INDX 4-Tool product and offline workflow",
+          "url": "https://www.prusa3d.com/product/prusa-core-one-l-indx-4-tool/"
+        }
+      ]
+    },
+    {
+      "id": "formlabs-fuse-1-plus-30w",
+      "manufacturer": "Formlabs",
+      "model": "Fuse 1+ 30W",
+      "process": "PBF-P",
+      "variant": "SLS",
+      "publicEvidenceStatus": "vendor-documented-workflow",
+      "documentedPath": "Formlabs documents direct USB connection and PreForm job transfer without machine network access. Formlabs lists Dashboard registration in the setup guide and describes Internet access for Dashboard connectivity.",
+      "verifyOnSite": [
+        "Verify whether commissioning can be completed under the site's connectivity policy and what registration or licensing is needed.",
+        "Confirm the precise PreForm version, job-upload path and report or log export available in the USB-only workflow.",
+        "Check the workstation's network and telemetry settings separately from the printer configuration."
+      ],
+      "sources": [
+        {
+          "title": "Formlabs Fuse 1+ 30W setup and Dashboard registration",
+          "url": "https://formlabs.com/eu/support/Unboxing-and-setting-up-the-Fuse-1-plus/"
+        },
+        {
+          "title": "Formlabs connectivity and security",
+          "url": "https://formlabs.com/support/Connectivity-and-Security/"
+        }
+      ]
+    },
+    {
+      "id": "nexa3d-qls-230",
+      "manufacturer": "Nexa3D",
+      "model": "QLS 230",
+      "process": "PBF-P",
+      "variant": "SLS",
+      "publicEvidenceStatus": "workflow-needs-confirmation",
+      "verifyOnSite": [
+        "PartsToGo lists the model and PTG PA12 together. Confirm the scheduled machine and grade.",
+        "Request supported procedures for job preparation, local or offline job transfer, report export and any Internet or licence dependency.",
+        "Identify the present support provider, software and firmware versions, update channel and support lifetime."
+      ],
+      "sources": [
+        {
+          "title": "Nexa3D QLS 230 SLS brochure",
+          "url": "https://nexa3d.com/wp-content/uploads/2023/04/QLS-230_Brochure_Web.pdf"
+        },
+        {
+          "title": "PartsToGo QLS 230 and PA12 listing",
+          "url": "https://parts-to-go.com/en/applications/jigs-and-fixtures"
+        }
+      ]
+    },
+    {
+      "id": "eos-m-290",
+      "manufacturer": "EOS",
+      "model": "M 290",
+      "process": "PBF-LB/M",
+      "variant": "metal laser powder bed fusion",
+      "publicEvidenceStatus": "vendor-documented-workflow",
+      "documentedPath": "EOSCONNECT Core release notes list the M 290 and describe the on-machine service, OPC UA for live data and events, and the certificate-protected Web API for historical and quality data.",
+      "verifyOnSite": [
+        "Confirm currently supported EOSYSTEM and EOSCONNECT versions, applicable licence and which data interfaces the exact installation exposes.",
+        "Verify certificate trust, authentication and a read-only consumer role on the chosen interface. Review OPC UA security settings separately from Web API settings.",
+        "Confirm the report's build identifiers and file availability. The data-interface evidence does not cover offline commissioning or job preparation."
+      ],
+      "sources": [
+        {
+          "title": "EOS software releases and EOSCONNECT Core connectivity and security",
+          "url": "https://www.eos.info/enablement/software/software-releases"
+        }
+      ]
+    }
+  ]
+}
