@@ -33,6 +33,8 @@ All 24 entries carry exact STEP geometry and SHA-256 evidence. Physical validati
 
 The [AM machine register](machines/README.md) links FDM, SLS and PBF-LB/M machines to public evidence for local job transfer or data access and lists the checks needed on an installed machine.
 
+The [PBF-LB/M integration and specimen evidence draft](docs/pilots/pbf-lbm/README.md) describes the handoff from CAD and CAM to machine, IDTA 02033 and inspection.
+
 ## Repository model
 
 ```text

@@ -15,3 +15,5 @@ Untersuchte Quelle: [Commit 0268784](https://github.com/skidzo/IDTA_submodel_met
 | Kein hier belegter kompletter Vertrag für Kalibrierereignisse und voxel-/zeitbezogene tatsächliche Energieeinträge | Keine Vollständigkeit aus nominalen Parametern ableiten | Separate, datenquellengestützte Erweiterung diskutieren |
 
 Die Informationssammlung [AM-Data-Model-Atlas](https://github.com/skidzo/AM-Data-Model-Atlas) sammelt ergänzende Modelle und Forschungsfragen. Die Vormerkungen begründen keinen Eingriff in das aktuelle IDTA-Release und beanspruchen keine bereits abgestimmte Standarderweiterung.
+
+The [PBF-LB/M integration draft](pilots/pbf-lbm/README.md) turns these gaps into acceptance cases for job import, event replay and specimen traceability.
